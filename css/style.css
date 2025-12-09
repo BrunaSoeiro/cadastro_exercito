@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Bruno+Ace+SC&family=Nothing+You+Could+Do&family=Permanent+Marker&family=Rock+Salt&family=Sigmar&family=Tourney:ital,wght@0,100..900;1,100..900&family=Zalando+Sans+Expanded:ital,wght@0,200..900;1,200..900&display=swap');
+
 /* ----------------------------------------- */
 /* ESTILOS GERAIS */
 /* ----------------------------------------- */
@@ -17,7 +19,7 @@ body {
     position: fixed;
     left: 0;
     top: 0;
-    width: 220px;
+    width: 400px;
     height: 100vh;
     background-color: #1a2f1a;
     padding-top: 40px;
@@ -25,6 +27,7 @@ body {
     flex-direction: column;
     gap: 25px;
     box-shadow: 3px 0 8px rgba(0,0,0,0.4);
+    
 }
 
 .sidebar a {
@@ -44,14 +47,23 @@ body {
     scale: 1.05;
 }
 
+.sidebar .titulo-sidebar {
+    font-size: 22px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: "Zalando Sans Expanded", sans-serif;
+}
+
+
+
 /* ----------------------------------------- */
 /* CARROSSEL DE IMAGENS FUNDO */
 /* ----------------------------------------- */
 .fundo-rolando {
     position: absolute;
     top: 0;
-    left: 220px;
-    width: calc(100% - 220px);
+    left: 400px;
+    width: calc(100% - 400px);
     height: 100vh;
     overflow: hidden;
 }
