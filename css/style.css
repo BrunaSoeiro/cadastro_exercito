@@ -152,6 +152,29 @@ body {
 .carousel { z-index: 1; }
 .quadro-view { z-index: 3; }
 
+.container {
+    max-width: 600px;
+    background: white;
+    margin: auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.label {
+    font-weight: bold;
+}
+
+.input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+
 .footer {
     position: fixed;
     bottom: 0;
