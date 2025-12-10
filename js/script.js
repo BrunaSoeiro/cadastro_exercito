@@ -41,3 +41,76 @@ if (linkCarrossel) {
 document.addEventListener('keydown', e => {
     if (e.key === 'Escape') showCarousel();
 });
+
+let indiceEdicao = null; // Guarda qual índice está sendo editado
+
+document.addEventListener("DOMContentLoaded", carregar);
+
+function salvar() {
+    const nome = document.getElementById("nome").value;
+    const ano = document.getElementById("ano").value;
+    const dataFechamento = document.getElementById("dataFechamento").value;
+
+    if (!nome || !ano || !dataFechamento) {
+        alert("Preencha todos os campos!");
+        return;
+    }
+
+    let lista = JSON.parse(localStorage.getItem("registros")) || [];
+
+    // Se NÃO está editando → adiciona novo
+    if (indiceEdicao === null) {
+        lista.push({ nome, ano, dataFechamento });
+    } else {
+        // Atualiza registro existente
+        lista[indiceEdicao] = { nome, ano, dataFechamento };
+        indiceEdicao = null;
+        document.getElementById("btnSalvar").innerText = "Salvar Registro";
+    }
+
+    localStorage.setItem("registros", JSON.stringify(lista));
+
+    // Limpa campos
+    document.getElementById("nome").value = "";
+    document.getElementById("ano").value = "";
+    document.getElementById("dataFechamento").value = "";
+
+    carregar();
+}
+
+function carregar() {
+    let lista = JSON.parse(localStorage.getItem("registros")) || [];
+    const tbody = document.querySelector("#tabela tbody");
+
+    tbody.innerHTML = "";
+
+    lista.forEach((reg, index) => {
+        const tr = document.createElement("tr");
+
+        tr.innerHTML = `
+            <td>${reg.nome}</td>
+            <td>${reg.ano}</td>
+            <td>${reg.dataFechamento}</td>
+            <td>
+                <button onclick="editar(${index})">Editar</button>
+            </td>
+        `;
+
+        tbody.appendChild(tr);
+    });
+}
+
+function editar(index) {
+    let lista = JSON.parse(localStorage.getItem("registros")) || [];
+    const reg = lista[index];
+
+    // Carrega os dados nos inputs
+    document.getElementById("nome").value = reg.nome;
+    document.getElementById("ano").value = reg.ano;
+    document.getElementById("dataFechamento").value = reg.dataFechamento;
+
+    indiceEdicao = index; // marca qual será editado
+
+    // Muda o texto do botão para indicar edição
+    document.getElementById("btnSalvar").innerText = "Atualizar Registro";
+}
