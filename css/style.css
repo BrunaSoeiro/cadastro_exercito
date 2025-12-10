@@ -19,7 +19,7 @@ body {
     position: fixed;
     left: 0;
     top: 0;
-    width: 400px;
+    width: 350px;
     height: 100vh;
     background-color: #1a2f1a;
     padding-top: 40px;
@@ -54,6 +54,9 @@ body {
     font-family: "Zalando Sans Expanded", sans-serif;
 }
 
+.icone {
+    width: 50px;
+}
 
 
 /* ----------------------------------------- */
@@ -62,8 +65,8 @@ body {
 .fundo-rolando {
     position: absolute;
     top: 0;
-    left: 400px;
-    width: calc(100% - 400px);
+    left: 350px;
+    width: calc(100% - 350px);
     height: 100vh;
     overflow: hidden;
 }
