@@ -12,6 +12,7 @@ body {
     color: white;
 }
 
+
 /* ----------------------------------------- */
 /* BARRA LATERAL */
 /* ----------------------------------------- */
@@ -52,7 +53,9 @@ body {
     margin-bottom: 20px;
     text-align: center;
     font-family: "Zalando Sans Expanded", sans-serif;
+    align-items: center;
 }
+
 
 .icone {
     width: 50px;
@@ -98,3 +101,21 @@ body {
 audio {
     display: none;
 }
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0; /* AGORA cobre a tela inteira */
+    width: 100%; /* não desconta a sidebar */
+    background-color: rgba(0, 0, 0, 0.8); 
+    color: #f2f2f2;
+    text-align: center;
+    padding: 12px 0;
+    font-size: 14px;
+    font-family: "Century Gothic", sans-serif;
+    letter-spacing: 0.5px;
+    z-index: 99999; /* fica na frente de tudo */
+}
+
+
+
