@@ -19,14 +19,30 @@
         <a href="https://www.gov.br/pt-br" target="_blank">Portal Gov</a>
         <a href="https://agencia.eb.mil.br" target="_blank">Notícias</a>
         <a href="https://www.defesa.gov.br" target="_blank">Ministério Defesa</a>
+        <a href="#" id="link-quadro">Cadastro</a>
+        <a href="#" id="link-carrossel">Voltar ao Carrossel</a>
+
     </div>
 
-    <!-- CARROSSEL DE FUNDO -->
-    <div class="fundo-rolando">
-        <img src="css/images/capa1.jpg" alt="Foto Militar 1">
-        <img src="css/images/capa2.jpg" alt="Foto Militar 2">
-        <img src="css/images/capa3.jpg" alt="Foto Militar 3">
+
+    <!-- ÁREA PRINCIPAL (substitui sua .fundo-rolando atual) -->
+    <div id="main-area" class="fundo-rolando">
+        <!-- CARROSSEL (padrão) -->
+        <div id="carousel" class="carousel">
+            <img src="css/images/capa1.jpg" alt="Foto Militar 1">
+            <img src="css/images/capa2.jpg" alt="Foto Militar 2">
+            <img src="css/images/capa3.jpg" alt="Foto Militar 3">
+        </div>
+
+        <!-- VISTA LISA + QUADRO (inicialmente escondida) -->
+        <div id="quadro-view" class="quadro-view" aria-hidden="true">
+            <div class="quadro-placeholder">
+                <!-- Aqui você colocará seu quadro depois -->
+                <p class="quadro-text">Seu quadro vai aqui — insira o conteúdo depois.</p>
+            </div>
+        </div>
     </div>
+
 
     <!-- MÚSICA DE FUNDO -->
     <audio autoplay loop>
@@ -37,5 +53,8 @@
         <p>© 2025 Onça Tec — Todos os direitos reservados.</p>
     </footer>
 
+    <script src="js/script.js"></script>
+
 </body>
+
 </html>
