@@ -213,6 +213,63 @@ body {
     100% { opacity: 0; }
 }
 
+/*  LISTAGEM  */
+
+.cadastro-container-militar {
+    background-color: #1a2f1a;
+    padding: 25px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 900px;
+    color: #d4d4a6;
+    border: 2px solid #3b5c3b;
+    box-shadow: 0 0 15px rgba(0,0,0,0.6);
+    font-family: "Zalando Sans Expanded", sans-serif;
+}
+
+.titulo-militar {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #c9e6c9;
+    text-transform: uppercase;
+}
+
+.input-militar {
+    width: 100%;
+    background-color: #243a24;
+    border: 2px solid #3f6b3f;
+    padding: 12px;
+    color: #eaffea;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.input-militar::placeholder {
+    color: #9dcf9d;
+}
+
+.tabela-militar {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #162616;
+    color: #e0ffd0;
+}
+
+.tabela-militar th, .tabela-militar td {
+    padding: 12px;
+    border: 1px solid #3f6b3f;
+    text-align: center;
+}
+
+.tabela-militar tr:nth-child(even) {
+    background-color: #1f351f;
+}
+
+.tabela-militar tr:hover {
+    background-color: #2f4b2f;
+}
 
 
 
