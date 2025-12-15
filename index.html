@@ -34,37 +34,26 @@
             <img src="css/images/capa3.jpg" alt="Foto Militar 3">
         </div>
 
-        <!-- VISTA LISA + QUADRO (inicialmente escondida) -->
-        <div id="quadro-view" class="quadro-view" aria-hidden="true">
-            <div class="quadro-placeholder">
-                <!-- Aqui você colocará seu quadro depois -->
-                 <div class="container">
-        <label>Nome:</label>
-        <input type="text" id="nome">
+        <div class="cadastro-container-militar">
+    <h2 class="titulo-militar">Consulta de Registros</h2>
 
-        <label>Ano de Óbito:</label>
-        <input type="number" id="ano">
+    <input type="text" id="pesquisa" placeholder="Digite um nome..." class="input-militar">
 
-        <label>Data de Fechamento do Processo:</label>
-        <input type="date" id="dataFechamento">
+    <table class="tabela-militar" id="tabela-militar">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>Processamento</th>
+                <th>Nascimento</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody id="tbody-militar"></tbody>
+    </table>
+</div>
 
-        <button id="btnSalvar" onclick="salvar()">Salvar Registro</button>
 
-        <table id="tabela">
-            <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th>Ano de Óbito</th>
-                    <th>Data do Fechamento</th>
-                    <th>Ação</th>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
-    </div>
-            </div>
-        </div>
-    </div>
 
 
     <!-- MÚSICA DE FUNDO -->
@@ -75,6 +64,7 @@
     <footer class="footer">
         <p>© 2025 Onça Tec — Todos os direitos reservados.</p>
     </footer>
+    
 
     <script src="js/script.js"></script>
 
