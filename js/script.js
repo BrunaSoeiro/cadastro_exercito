@@ -114,3 +114,93 @@ function editar(index) {
     // Muda o texto do botão para indicar edição
     document.getElementById("btnSalvar").innerText = "Atualizar Registro";
 }
+
+// --------------------------------------------
+// GERAR 200 REGISTROS FICTÍCIOS MILITARES, LISTA
+// --------------------------------------------
+
+// 5 nomes fixos
+const nomesBase = ["João", "Carlos", "Paulo", "Mateus", "Henrique"];
+
+// sobrenomes variados
+const sobrenomes = [
+    "Silva","Souza","Pereira","Costa","Oliveira","Castro","Melo","Freitas",
+    "Carvalho","Nunes","Martins","Almeida","Braga","Barros","Santos","Cavalcante",
+    "Ribeiro","Farias","Azevedo","Furtado","Lima","Andrade","Cardoso","Dias"
+];
+
+// gerar CPF
+function gerarCPF() {
+    return Array(11).fill(0).map(() => Math.floor(Math.random()*10)).join('');
+}
+
+// gerar data de nascimento
+function gerarData() {
+    const ano = 1960 + Math.floor(Math.random()*50);
+    const mes = 1 + Math.floor(Math.random()*12);
+    const dia = 1 + Math.floor(Math.random()*28);
+    return `${dia}/${mes}/${ano}`;
+}
+
+// gerar número de processo
+function gerarProcesso() {
+    return "PROC-" + Math.floor(Math.random() * 90000 + 10000);
+}
+
+// gerar status
+function gerarStatus() {
+    return Math.random() > 0.5 ? "ATIVO" : "INATIVO";
+}
+
+const registrosMilitares = [];
+
+// cria 200 nomes combinando os 5 nomes + sobrenomes aleatórios
+for (let i = 0; i < 200; i++) {
+    const nome = nomesBase[i % 5] + " " + sobrenomes[Math.floor(Math.random()*sobrenomes.length)];
+
+    registrosMilitares.push({
+        nome,
+        cpf: gerarCPF(),
+        processamento: gerarProcesso(),
+        nascimento: gerarData(),
+        status: gerarStatus()
+    });
+}
+
+// --------------------------------------------
+// FUNÇÃO PARA MOSTRAR RESULTADOS (TABELA)
+// --------------------------------------------
+
+function carregarTabelaMilitar(lista) {
+    const tbody = document.getElementById("tbody-militar");
+    tbody.innerHTML = "";
+
+    lista.forEach(reg => {
+        tbody.innerHTML += `
+            <tr>
+                <td>${reg.nome}</td>
+                <td>${reg.cpf}</td>
+                <td>${reg.processamento}</td>
+                <td>${reg.nascimento}</td>
+                <td>${reg.status}</td>
+            </tr>
+        `;
+    });
+}
+
+// tabela começa vazia
+carregarTabelaMilitar([]);
+
+// --------------------------------------------
+// BUSCA AUTOMÁTICA
+// --------------------------------------------
+
+document.getElementById("pesquisa").addEventListener("input", function () {
+    const texto = this.value.toLowerCase();
+
+    const filtrado = registrosMilitares.filter(reg =>
+        reg.nome.toLowerCase().includes(texto)
+    );
+
+    carregarTabelaMilitar(filtrado);
+});
