@@ -148,6 +148,7 @@ document.getElementById('btn-salvar').addEventListener('click', () => {
     }
 
     adicionarRegistro({ nome, cpf, nascimento, status });
+    atualizarGraficos(); 
 
     document.getElementById('cad-nome').value = '';
     document.getElementById('cad-cpf').value = '';

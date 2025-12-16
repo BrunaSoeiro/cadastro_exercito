@@ -69,10 +69,13 @@
     <div class="cadastro-container-militar">
         <h2 class="titulo-militar">Cadastro Militar</h2>
 
-        <input type="text" id="cad-nome" class="input-militar" placeholder="Nome completo">
-        <input type="text" id="cad-cpf" class="input-militar" placeholder="CPF">
+        <label class="label-militar">Nome completo:</label>
+        <input type="text" id="cad-nome" class="input-militar" placeholder="Digite seu nome...">
+        <label class="label-militar">CPF:</label>
+        <input type="text" id="cad-cpf" class="input-militar" placeholder="Digite seu CPF...">
+        <label class="label-militar">Data de nascimento:</label>
         <input type="date" id="cad-nascimento" class="input-militar">
-
+        <label class="label-militar">Situação Militar:</label>       
         <select id="cad-status" class="input-militar">
             <option value="">Status</option>
             <option value="ATIVO">ATIVO</option>
@@ -86,7 +89,7 @@
             <!-- VIEW GRÁFICOS -->
             <div id="view-graficos" class="quadro-view" aria-hidden="true">
                 <div class="graficos-container">
-                    <h2 class="titulo-militar">Estatísticas Militares</h2>
+                    <h2 class="titulo-militar">Situação Militar</h2>
             
                     <div class="grafico-barras">
                         <div class="barra ativo">Ativos</div>

@@ -222,6 +222,15 @@ input[type="date"] {
     text-transform: uppercase;
 }
 
+.label-militar {
+    display: block;
+    margin-bottom: 12px; /* espaço entre texto e caixa */
+    font-size: 13px;
+    color: #c9e6c9;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
 .input-militar {
     width: 100%;
     background-color: #243a24;
@@ -313,6 +322,11 @@ audio { display: none; }
     width: 0;
     transition: width 1s ease;
     border-radius: 6px;
+    margin-bottom: 12px; 
+}
+
+.barra:last-child {
+    margin-bottom: 0;
 }
 
 .barra.ativo { background-color: #2e7d32; }
