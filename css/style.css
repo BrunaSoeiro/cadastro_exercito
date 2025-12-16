@@ -372,11 +372,16 @@ audio {
 .cor.reserva { background: #f9a825; }
 .cor.reformado { background: #c62828; }
 
-
-.view, .carousel {
-    display: none;
-  }
-  
-  .view.active, .carousel.active {
+.carousel {
     display: block;
-  }
+}
+
+.quadro-view,
+.view {
+    display: none;
+}
+
+.quadro-view.active,
+.view.active {
+    display: flex;
+}
