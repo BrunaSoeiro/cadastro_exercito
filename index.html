@@ -11,65 +11,88 @@
 </head>
 
 <body>
+    <header>
+        <!-- BARRA LATERAL -->
+        <div class="sidebar">
+            <h2 class="titulo-sidebar"><img class="icone" src="css/images/favicon.png" alt="Icone"> Exército Brasileiro
+            </h2>
+            <a href="https://www.eb.mil.br" target="_blank">Site Oficial</a>
+            <a href="https://www.gov.br/pt-br" target="_blank">Portal Gov</a>
+            <a href="https://agencia.eb.mil.br" target="_blank">Notícias</a>
+            <a href="https://www.defesa.gov.br" target="_blank">Ministério Defesa</a>
+            <a href="#" id="link-carrossel">Voltar ao Carrossel</a>
+            <a href="#" id="link-registros">Registros</a>
+            <a href="#" id="link-cadastro">Cadastro</a>
 
-    <!-- BARRA LATERAL -->
-    <div class="sidebar">
-        <h2 class="titulo-sidebar"><img class="icone" src="css/images/favicon.png" alt="Icone"> Exército Brasileiro</h2>
-        <a href="https://www.eb.mil.br" target="_blank">Site Oficial</a>
-        <a href="https://www.gov.br/pt-br" target="_blank">Portal Gov</a>
-        <a href="https://agencia.eb.mil.br" target="_blank">Notícias</a>
-        <a href="https://www.defesa.gov.br" target="_blank">Ministério Defesa</a>
-        <a href="#" id="link-quadro">Cadastro</a>
-        <a href="#" id="link-carrossel">Voltar ao Carrossel</a>
-
-    </div>
 
 
-    <!-- ÁREA PRINCIPAL (substitui sua .fundo-rolando atual) -->
-    <div id="main-area" class="fundo-rolando">
-        <!-- CARROSSEL (padrão) -->
-        <div id="carousel" class="carousel">
-            <img src="css/images/capa1.jpg" alt="Foto Militar 1">
-            <img src="css/images/capa2.jpg" alt="Foto Militar 2">
-            <img src="css/images/capa3.jpg" alt="Foto Militar 3">
         </div>
 
+    </header>
 
-        <div id="quadro-view" class="quadro-view" aria-hidden="true">
-
-            <div class="cadastro-container-militar">
-                <h2 class="titulo-militar">Consulta de Registros</h2>
-
-                <input type="text" id="pesquisa" placeholder="Digite um nome..." class="input-militar">
-
-                <table class="tabela-militar" id="tabela-militar">
-                    <thead>
-                        <tr>
-                            <th>Nome</th>
-                            <th>CPF</th>
-                            <th>Processamento</th>
-                            <th>Nascimento</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tbody-militar"></tbody>
-                </table>
+    <main>
+        <!-- ÁREA PRINCIPAL (substitui sua .fundo-rolando atual) -->
+        <div id="main-area" class="fundo-rolando">
+            <!-- CARROSSEL (padrão) -->
+            <!-- CARROSSEL (padrão) -->
+            <div id="carousel" class="carousel">
+                <img src="css/images/capa1.jpg" alt="Foto Militar 1">
+                <img src="css/images/capa2.jpg" alt="Foto Militar 2">
+                <img src="css/images/capa3.jpg" alt="Foto Militar 3">
             </div>
-        </div>
 
+            <!-- ABA REGISTROS -->
+            <div id="aba-registros" class="quadro-view" aria-hidden="true">
+                <div class="cadastro-container-militar">
+                    <h2 class="titulo-militar">Consulta de Registros</h2>
 
+                    <input type="text" id="pesquisa" placeholder="Digite um nome..." class="input-militar">
+
+                    <table class="tabela-militar" id="tabela-militar">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>CPF</th>
+                                <th>Nascimento</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody-militar"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ABA CADASTRO -->
+            <div id="aba-cadastro" class="quadro-view" aria-hidden="true">
+                <div class="cadastro-container-militar">
+                    <h2 class="titulo-militar">Cadastro Militar</h2>
+
+                    <input type="text" id="cad-nome" class="input-militar" placeholder="Nome completo">
+                    <input type="text" id="cad-cpf" class="input-militar" placeholder="CPF">
+                    <input type="date" id="cad-nascimento" class="input-militar">
+
+                    <select id="cad-status" class="input-militar">
+                        <option value="">Status</option>
+                        <option value="ATIVO">ATIVO</option>
+                        <option value="INATIVO">INATIVO</option>
+                    </select>
+
+                    <button id="btn-salvar" class="btn-militar">Salvar Cadastro</button>
+                </div>
+            </div>
 
             <!-- MÚSICA DE FUNDO -->
             <audio autoplay loop>
                 <source src="musica.mp3" type="audio/mpeg">
             </audio>
+        </div>
+        </main>
+    <footer class="footer">
+        <p>© 2025 Onça Tec — Todos os direitos reservados.</p>
+    </footer>
 
-            <footer class="footer">
-                <p>© 2025 Onça Tec — Todos os direitos reservados.</p>
-            </footer>
 
-
-            <script src="js/script.js"></script>
+    <script src="js/script.js"></script>
 
 </body>
 

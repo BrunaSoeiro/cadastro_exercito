@@ -12,7 +12,6 @@ body {
     color: white;
 }
 
-
 /* ----------------------------------------- */
 /* BARRA LATERAL */
 /* ----------------------------------------- */
@@ -28,7 +27,6 @@ body {
     flex-direction: column;
     gap: 25px;
     box-shadow: 3px 0 8px rgba(0, 0, 0, 0.4);
-
 }
 
 .sidebar a {
@@ -55,6 +53,7 @@ body {
     font-family: "Zalando Sans Expanded", sans-serif;
     align-items: center;
 }
+
 h2 {
     display: flex;
     justify-content: center;
@@ -65,7 +64,6 @@ h2 {
 .icone {
     width: 50px;
 }
-
 
 /* ----------------------------------------- */
 /* CARROSSEL DE IMAGENS FUNDO */
@@ -99,10 +97,17 @@ h2 {
     animation-fill-mode: both;
 }
 
+.carousel img:nth-child(1) {
+    animation-delay: 0s;
+}
 
-.carousel img:nth-child(1) { animation-delay: 0s; }
-.carousel img:nth-child(2) { animation-delay: 6s; }
-.carousel img:nth-child(3) { animation-delay: 12s; }
+.carousel img:nth-child(2) {
+    animation-delay: 6s;
+}
+
+.carousel img:nth-child(3) {
+    animation-delay: 12s;
+}
 
 /* QUADRO (inicialmente escondido) */
 .quadro-view {
@@ -183,9 +188,7 @@ h2 {
     border: 1px solid #ccc;
 }
 
-
-/*  LISTAGEM  */
-
+/* LISTAGEM */
 .cadastro-container-militar {
     background-color: #1a2f1a;
     padding: 25px;
@@ -244,6 +247,23 @@ h2 {
     background-color: #2f4b2f;
 }
 
+.btn-militar {
+    width: 100%;
+    padding: 14px;
+    background-color: #2f5b2f;
+    color: #eaffea;
+    border: 2px solid #4d7c4d;
+    border-radius: 6px;
+    font-family: "Zalando Sans Expanded", sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-militar:hover {
+    background-color: #3f7a3f;
+}
+
 .footer {
     position: fixed;
     bottom: 0;
@@ -271,7 +291,6 @@ h2 {
     }
 }
 
-
 /* ----------------------------------------- */
 /* MÚSICA DE FUNDO (ESCONDIDA) */
 /* ----------------------------------------- */
@@ -283,10 +302,26 @@ audio {
 /* ANIMAÇÃO DO CARROSSEL */
 /* ----------------------------------------- */
 @keyframes slide {
-    0%   { opacity: 0; }
-    5%   { opacity: 1; }   /* entra */
-    30%  { opacity: 1; }   /* tempo visível */
-    35%  { opacity: 0; }   /* sai */
-    100% { opacity: 0; }
-}
+    0% {
+        opacity: 0;
+    }
 
+    5% {
+        opacity: 1;
+    }
+
+    /* entra */
+    30% {
+        opacity: 1;
+    }
+
+    /* tempo visível */
+    35% {
+        opacity: 0;
+    }
+
+    /* sai */
+    100% {
+        opacity: 0;
+    }
+}

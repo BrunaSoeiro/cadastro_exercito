@@ -1,206 +1,186 @@
-// Seletores
-const linkQuadro = document.getElementById('link-quadro');
+// ================================
+// SELETORES
+// ================================
+const linkRegistros = document.getElementById('link-registros');
+const linkCadastro = document.getElementById('link-cadastro');
 const linkCarrossel = document.getElementById('link-carrossel');
-const quadroView = document.getElementById('quadro-view');
+
+const abaRegistros = document.getElementById('aba-registros');
+const abaCadastro = document.getElementById('aba-cadastro');
 const carousel = document.getElementById('carousel');
 
-// Função para mostrar o quadro (substitui o carrossel)
-function showQuadro() {
-    carousel.classList.add('hidden');      // esconde o carrossel
-    quadroView.classList.add('active');    // mostra o quadro
-    quadroView.setAttribute('aria-hidden', 'false');
-}
-
-// Função para voltar ao carrossel
-function showCarousel() {
-    quadroView.classList.remove('active');
-    quadroView.setAttribute('aria-hidden', 'true');
-
-    // espera um pouco para suavizar a transição antes de mostrar o carrossel
-    setTimeout(() => {
-        carousel.classList.remove('hidden');
-    }, 250);
-}
-
-// Eventos dos botões da sidebar
-if (linkQuadro) {
-    linkQuadro.addEventListener('click', e => {
-        e.preventDefault();
-        showQuadro();
+// ================================
+// FUNÇÃO PARA MOSTRAR ABA
+// ================================
+function mostrarAba(aba) {
+    // esconde todas as abas
+    [abaCadastro, abaRegistros].forEach(a => {
+        a.classList.remove('active');
+        a.setAttribute('aria-hidden', 'true');
     });
+
+    // mostra a aba escolhida
+    aba.classList.add('active');
+    aba.setAttribute('aria-hidden', 'false');
+
+    // esconde carrossel
+    carousel.classList.add('hidden');
 }
 
-if (linkCarrossel) {
-    linkCarrossel.addEventListener('click', e => {
-        e.preventDefault();
-        showCarousel();
+// ================================
+// VOLTAR PARA CARROSSEL
+// ================================
+function mostrarCarrossel() {
+    [abaCadastro, abaRegistros].forEach(a => {
+        a.classList.remove('active');
+        a.setAttribute('aria-hidden', 'true');
     });
+    carousel.classList.remove('hidden');
 }
 
-// Permite fechar o quadro com ESC
-document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') showCarousel();
+// ================================
+// EVENTOS DA SIDEBAR
+// ================================
+linkCadastro.addEventListener('click', e => {
+    e.preventDefault();
+    mostrarAba(abaCadastro);
 });
 
-let indiceEdicao = null; // Guarda qual índice está sendo editado
+linkRegistros.addEventListener('click', e => {
+    e.preventDefault();
+    mostrarAba(abaRegistros);
+});
 
-document.addEventListener("DOMContentLoaded", carregar);
+linkCarrossel.addEventListener('click', e => {
+    e.preventDefault();
+    mostrarCarrossel();
+});
 
-function salvar() {
-    const nome = document.getElementById("nome").value;
-    const ano = document.getElementById("ano").value;
-    const dataFechamento = document.getElementById("dataFechamento").value;
+// Fechar abas com ESC
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') mostrarCarrossel();
+});
 
-    if (!nome || !ano || !dataFechamento) {
-        alert("Preencha todos os campos!");
-        return;
-    }
-
-    let lista = JSON.parse(localStorage.getItem("registros")) || [];
-
-    // Se NÃO está editando → adiciona novo
-    if (indiceEdicao === null) {
-        lista.push({ nome, ano, dataFechamento });
-    } else {
-        // Atualiza registro existente
-        lista[indiceEdicao] = { nome, ano, dataFechamento };
-        indiceEdicao = null;
-        document.getElementById("btnSalvar").innerText = "Salvar Registro";
-    }
-
-    localStorage.setItem("registros", JSON.stringify(lista));
-
-    // Limpa campos
-    document.getElementById("nome").value = "";
-    document.getElementById("ano").value = "";
-    document.getElementById("dataFechamento").value = "";
-
-    carregar();
+// ================================
+// STORAGE - REGISTROS MILITARES
+// ================================
+function obterRegistros() {
+    return JSON.parse(localStorage.getItem("registrosMilitares")) || [];
 }
 
-function carregar() {
-    let lista = JSON.parse(localStorage.getItem("registros")) || [];
-    const tbody = document.querySelector("#tabela tbody");
-
-    tbody.innerHTML = "";
-
-    lista.forEach((reg, index) => {
-        const tr = document.createElement("tr");
-
-        tr.innerHTML = `
-            <td>${reg.nome}</td>
-            <td>${reg.ano}</td>
-            <td>${reg.dataFechamento}</td>
-            <td>
-                <button onclick="editar(${index})">Editar</button>
-            </td>
-        `;
-
-        tbody.appendChild(tr);
-    });
+function salvarRegistros(lista) {
+    localStorage.setItem("registrosMilitares", JSON.stringify(lista));
 }
 
-function editar(index) {
-    let lista = JSON.parse(localStorage.getItem("registros")) || [];
-    const reg = lista[index];
-
-    // Carrega os dados nos inputs
-    document.getElementById("nome").value = reg.nome;
-    document.getElementById("ano").value = reg.ano;
-    document.getElementById("dataFechamento").value = reg.dataFechamento;
-
-    indiceEdicao = index; // marca qual será editado
-
-    // Muda o texto do botão para indicar edição
-    document.getElementById("btnSalvar").innerText = "Atualizar Registro";
+function adicionarRegistroMilitar(registro) {
+    const lista = obterRegistros();
+    lista.push(registro);
+    salvarRegistros(lista);
+    carregarTabelaMilitar(obterRegistros());
 }
 
-// --------------------------------------------
-// GERAR 200 REGISTROS FICTÍCIOS MILITARES, LISTA
-// --------------------------------------------
-
-// 5 nomes fixos
-const nomesBase = ["João", "Carlos", "Paulo", "Mateus", "Henrique"];
-
-// sobrenomes variados
-const sobrenomes = [
-    "Silva","Souza","Pereira","Costa","Oliveira","Castro","Melo","Freitas",
-    "Carvalho","Nunes","Martins","Almeida","Braga","Barros","Santos","Cavalcante",
-    "Ribeiro","Farias","Azevedo","Furtado","Lima","Andrade","Cardoso","Dias"
-];
-
-// gerar CPF
-function gerarCPF() {
-    return Array(11).fill(0).map(() => Math.floor(Math.random()*10)).join('');
-}
-
-// gerar data de nascimento
-function gerarData() {
-    const ano = 1960 + Math.floor(Math.random()*50);
-    const mes = 1 + Math.floor(Math.random()*12);
-    const dia = 1 + Math.floor(Math.random()*28);
-    return `${dia}/${mes}/${ano}`;
-}
-
-// gerar número de processo
-function gerarProcesso() {
-    return "PROC-" + Math.floor(Math.random() * 90000 + 10000);
-}
-
-// gerar status
-function gerarStatus() {
-    return Math.random() > 0.5 ? "ATIVO" : "INATIVO";
-}
-
-const registrosMilitares = [];
-
-// cria 200 nomes combinando os 5 nomes + sobrenomes aleatórios
-for (let i = 0; i < 200; i++) {
-    const nome = nomesBase[i % 5] + " " + sobrenomes[Math.floor(Math.random()*sobrenomes.length)];
-
-    registrosMilitares.push({
-        nome,
-        cpf: gerarCPF(),
-        processamento: gerarProcesso(),
-        nascimento: gerarData(),
-        status: gerarStatus()
-    });
-}
-
-// --------------------------------------------
-// FUNÇÃO PARA MOSTRAR RESULTADOS (TABELA)
-// --------------------------------------------
-
+// ================================
+// CARREGAR TABELA
+// ================================
 function carregarTabelaMilitar(lista) {
     const tbody = document.getElementById("tbody-militar");
     tbody.innerHTML = "";
 
+    // Ordena a lista pela data de nascimento (mais antiga primeiro)
+    lista.sort((a, b) => parseData(a.nascimento) - parseData(b.nascimento));
+
     lista.forEach(reg => {
+        const nascimentoFormatado = formatarDataParaDDMMYYYY(reg.nascimento);
         tbody.innerHTML += `
             <tr>
                 <td>${reg.nome}</td>
                 <td>${reg.cpf}</td>
-                <td>${reg.processamento}</td>
-                <td>${reg.nascimento}</td>
+                <td>${nascimentoFormatado}</td>
                 <td>${reg.status}</td>
             </tr>
         `;
     });
 }
 
-// tabela começa vazia
-carregarTabelaMilitar([]);
+// ================================
+// CONVERSÃO DE DATAS
+// ================================
 
-// --------------------------------------------
-// BUSCA AUTOMÁTICA
-// --------------------------------------------
+// Converte data do input (YYYY-MM-DD) para DD/MM/YYYY
+function formatarDataParaDDMMYYYY(dataStr) {
+    if (!dataStr) return "";
+    if (dataStr.includes('-')) {
+        const [ano, mes, dia] = dataStr.split('-');
+        return `${dia}/${mes}/${ano}`;
+    }
+    if (dataStr.includes('/')) {
+        return dataStr; // já está no formato correto
+    }
+    return dataStr; // caso estranho, retorna como está
+}
 
+// Converte DD/MM/YYYY ou YYYY-MM-DD para objeto Date para ordenação
+function parseData(dataStr) {
+    if (!dataStr) return new Date(0);
+    if (dataStr.includes('/')) { // formato DD/MM/YYYY
+        const [dia, mes, ano] = dataStr.split('/');
+        return new Date(`${ano}-${mes}-${dia}`);
+    } else { // formato YYYY-MM-DD
+        return new Date(dataStr);
+    }
+}
+
+// ================================
+// BUSCA
+// ================================
 document.getElementById("pesquisa").addEventListener("input", function () {
     const texto = this.value.toLowerCase();
-
-    const filtrado = registrosMilitares.filter(reg =>
-        reg.nome.toLowerCase().includes(texto)
-    );
-
+    const lista = obterRegistros();
+    const filtrado = lista.filter(reg => reg.nome.toLowerCase().includes(texto));
     carregarTabelaMilitar(filtrado);
+});
+
+// ================================
+// CADASTRO
+// ================================
+document.getElementById("btn-salvar").addEventListener("click", () => {
+    const nome = document.getElementById("cad-nome").value.trim();
+    const cpf = document.getElementById("cad-cpf").value.trim();
+    const nascimento = document.getElementById("cad-nascimento").value; // vem no formato YYYY-MM-DD
+    const status = document.getElementById("cad-status").value;
+
+    if (!nome || !cpf || !nascimento || !status) {
+        alert("Preencha todos os campos.");
+        return;
+    }
+
+    const novoRegistro = { nome, cpf, nascimento, status };
+    adicionarRegistroMilitar(novoRegistro);
+
+    // limpa formulário
+    document.getElementById("cad-nome").value = "";
+    document.getElementById("cad-cpf").value = "";
+    document.getElementById("cad-nascimento").value = "";
+    document.getElementById("cad-status").value = "";
+
+    alert("Cadastro salvo com sucesso!");
+});
+
+// ================================
+// CARREGAMENTO INICIAL
+// ================================
+document.addEventListener("DOMContentLoaded", () => {
+    const registrosExistentes = obterRegistros();
+
+    // Se não houver registros, cria 1 de teste
+    if (registrosExistentes.length === 0) {
+        adicionarRegistroMilitar({
+            nome: "João da Silva",
+            cpf: "12345678900",
+            nascimento: "10/10/1980", // aqui você pode deixar em DD/MM/YYYY para o teste, mas será exibido direto
+            status: "ATIVO"
+        });
+    } else {
+        carregarTabelaMilitar(registrosExistentes);
+    }
 });
