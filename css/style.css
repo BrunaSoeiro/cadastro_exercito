@@ -461,3 +461,61 @@ audio {
         padding: 20px;
     }
 }
+
+
+
+/* ----------------------------------------- */
+/* TABLET */
+/* ----------------------------------------- */
+@media (max-width: 1024px) {
+    .sidebar {
+        width: 280px;
+    }
+
+    .fundo-rolando {
+        left: 280px;
+        width: calc(100% - 280px);
+    }
+
+    /* Mostrar apenas capa1 e capa3 no carrossel */
+    .carousel img:nth-child(2) {
+        display: none;
+    }
+}
+
+/* ----------------------------------------- */
+/* CELULAR */
+/* ----------------------------------------- */
+@media (max-width: 600px) {
+    body {
+        overflow: auto;
+    }
+
+    /* remove carrossel */
+    .carousel {
+        display: none;
+    }
+
+    /* background fixo */
+    .fundo-rolando {
+        position: relative;
+        left: 0;
+        width: 100%;
+        height: auto;
+        min-height: 100vh;
+        background-image: url("css/images/capa1.jpg");
+        background-size: cover;
+        background-position: center;
+    }
+
+    /* sidebar centralizada */
+    .sidebar {
+        position: relative;
+        width: 90%;
+        height: auto;
+        margin: 40px auto;
+        border-radius: 12px;
+        background-color: rgba(26, 47, 26, 0.95);
+    }
+}
+
