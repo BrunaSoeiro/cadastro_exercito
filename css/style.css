@@ -27,7 +27,16 @@ body {
     flex-direction: column;
     gap: 25px;
     box-shadow: 3px 0 8px rgba(0, 0, 0, 0.4);
+    z-index: 9999; /* 🔥 garantir clique na sidebar */
 }
+
+.sidebar .icone {
+    width: 40px;      /* tamanho fixo menor */
+    height: 40px;     /* mantém proporção */
+    object-fit: contain; /* garante que a imagem não distorça */
+    vertical-align: middle; /* alinha com o texto */
+}
+
 
 .sidebar a {
     text-decoration: none;
@@ -51,24 +60,11 @@ body {
     margin-bottom: 20px;
     text-align: center;
     font-family: "Zalando Sans Expanded", sans-serif;
-    align-items: center;
-}
-
-h2 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-.icone {
-    width: 50px;
 }
 
 /* ----------------------------------------- */
 /* CARROSSEL DE IMAGENS FUNDO */
 /* ----------------------------------------- */
-/* --- área principal já existente --- */
 .fundo-rolando {
     position: absolute;
     top: 0;
@@ -77,13 +73,14 @@ h2 {
     height: 100vh;
     overflow: hidden;
     display: block;
+    z-index: 1;
+    pointer-events: none; /* permite clicar na sidebar */
 }
 
-/* CARROSSEL (mantive sua animação) */
 .carousel {
     position: absolute;
     inset: 0;
-    z-index: 1;
+    z-index: 2;
 }
 
 .carousel img {
@@ -97,34 +94,40 @@ h2 {
     animation-fill-mode: both;
 }
 
-.carousel img:nth-child(1) {
-    animation-delay: 0s;
+.carousel img:nth-child(1) { animation-delay: 0s; }
+.carousel img:nth-child(2) { animation-delay: 6s; }
+.carousel img:nth-child(3) { animation-delay: 12s; }
+
+.carousel.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 300ms ease;
 }
 
-.carousel img:nth-child(2) {
-    animation-delay: 6s;
-}
-
-.carousel img:nth-child(3) {
-    animation-delay: 12s;
-}
-
-/* QUADRO (inicialmente escondido) */
+/* ----------------------------------------- */
+/* QUADRO (VIEWS/PLACEHOLDER) */
+/* ----------------------------------------- */
 .quadro-view {
     position: absolute;
     inset: 0;
+    background: #23382e;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #23382e;
-    /* cor lisa de fundo da vista quadro */
+    z-index: 10;
     visibility: hidden;
     opacity: 0;
-    transition: opacity 400ms ease, visibility 0s linear 400ms;
-    z-index: 3;
+    transition: opacity 0.4s ease, visibility 0s linear 0.4s;
+    pointer-events: none;
 }
 
-/* placeholder do quadro (onde você vai inserir depois o conteúdo real) */
+.quadro-view.active {
+    visibility: visible;
+    opacity: 1;
+    transition-delay: 0s;
+    pointer-events: auto;
+}
+
 .quadro-placeholder {
     width: 70%;
     max-width: 900px;
@@ -144,7 +147,6 @@ h2 {
     backdrop-filter: blur(2px);
 }
 
-/* texto de instrução dentro do placeholder */
 .quadro-text {
     font-family: "Century Gothic", sans-serif;
     font-size: 1.15rem;
@@ -152,20 +154,9 @@ h2 {
     color: #e0c792;
 }
 
-/* classe "ativa" para mostrar o quadro */
-.quadro-view.active {
-    visibility: visible;
-    opacity: 1;
-    transition-delay: 0s;
-}
-
-/* quando o quadro está ativo, escondemos o carrossel (melhora transição) */
-.carousel.hidden {
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 300ms ease;
-}
-
+/* ----------------------------------------- */
+/* LISTAGENS / FORMULÁRIOS */
+/* ----------------------------------------- */
 .container {
     max-width: 600px;
     background: white;
@@ -175,20 +166,39 @@ h2 {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.label {
-    font-weight: bold;
-}
+.label { font-weight: bold; }
 
 .input {
     width: 100%;
     padding: 8px;
-    margin-top: 5px;
-    margin-bottom: 15px;
+    margin: 5px 0 15px 0;
     border-radius: 5px;
     border: 1px solid #ccc;
 }
 
-/* LISTAGEM */
+input,
+select {
+  width: 100%;
+  height: 45px;
+  padding: 0 12px;
+  border-radius: 6px;
+  border: 1px solid #3f6b4f;
+  background-color: #1f3b2a;
+  color: #d9f5e1;
+  font-size: 15px;
+  box-sizing: border-box;
+}
+
+input[type="date"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+  
+
+/* ------------------------------- */
+/* LISTAGEM MILITAR / TABELAS */
+/* ------------------------------- */
 .cadastro-container-militar {
     background-color: #1a2f1a;
     padding: 25px;
@@ -199,6 +209,9 @@ h2 {
     border: 2px solid #3b5c3b;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
     font-family: "Zalando Sans Expanded", sans-serif;
+    box-sizing: border-box;
+    overflow-x: hidden; /* remove barra horizontal */
+    word-wrap: break-word; /* quebra texto grande */
 }
 
 .titulo-militar {
@@ -220,9 +233,7 @@ h2 {
     font-size: 14px;
 }
 
-.input-militar::placeholder {
-    color: #9dcf9d;
-}
+.input-militar::placeholder { color: #9dcf9d; }
 
 .tabela-militar {
     width: 100%;
@@ -230,6 +241,7 @@ h2 {
     background-color: #162616;
     color: #e0ffd0;
     font-size: 14px;
+    table-layout: fixed; /* força colunas a se ajustarem */
 }
 
 .tabela-militar th,
@@ -237,15 +249,11 @@ h2 {
     padding: 12px;
     border: 1px solid #3f6b3f;
     text-align: center;
+    word-wrap: break-word; /* quebra texto grande */
 }
 
-.tabela-militar tr:nth-child(even) {
-    background-color: #1f351f;
-}
-
-.tabela-militar tr:hover {
-    background-color: #2f4b2f;
-}
+.tabela-militar tr:nth-child(even) { background-color: #1f351f; }
+.tabela-militar tr:hover { background-color: #2f4b2f; }
 
 .btn-militar {
     width: 100%;
@@ -260,17 +268,16 @@ h2 {
     transition: 0.3s;
 }
 
-.btn-militar:hover {
-    background-color: #3f7a3f;
-}
+.btn-militar:hover { background-color: #3f7a3f; }
 
+/* ----------------------------------------- */
+/* FOOTER */
+/* ----------------------------------------- */
 .footer {
     position: fixed;
     bottom: 0;
     left: 0;
-    /* AGORA cobre a tela inteira */
     width: 100%;
-    /* não desconta a sidebar */
     background-color: rgba(0, 0, 0, 0.8);
     color: #f2f2f2;
     text-align: center;
@@ -278,225 +285,80 @@ h2 {
     font-size: 14px;
     font-family: "Century Gothic", sans-serif;
     letter-spacing: 0.5px;
-    z-index: 99999;
-    /* fica na frente de tudo */
+    z-index: 9999;
 }
-
 
 /* ----------------------------------------- */
 /* MÚSICA DE FUNDO (ESCONDIDA) */
 /* ----------------------------------------- */
-audio {
-    display: none;
-}
+audio { display: none; }
 
 /* ----------------------------------------- */
 /* ANIMAÇÃO DO CARROSSEL */
 /* ----------------------------------------- */
 @keyframes slide {
-    0% {
-        opacity: 0;
-    }
-
-    5% {
-        opacity: 1;
-    }
-
-    /* entra */
-    30% {
-        opacity: 1;
-    }
-
-    /* tempo visível */
-    35% {
-        opacity: 0;
-    }
-
-    /* sai */
-    100% {
-        opacity: 0;
-    }
+    0%, 35%, 100% { opacity: 0; }
+    5%, 30% { opacity: 1; }
 }
 
 /* ----------------------------------------- */
-/* VIEW GRÁFICOS - CENTRALIZAÇÃO */
+/* GRÁFICOS DE BARRAS / PIZZA */
 /* ----------------------------------------- */
-
-.quadro-view {
-    position: absolute;
-    inset: 0;
-    background: #23382e;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 4;
-}
-
-.quadro-view .graficos-container {
-    background-color: #1a2f1a;
-    border: 2px solid #3b5c3b;
-    border-radius: 12px;
-    padding: 30px;
-    width: 90%;
-    max-width: 900px;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    box-shadow: 0 0 18px rgba(0,0,0,0.6);
-}
-
-.quadro-view {
-    visibility: hidden;
-    opacity: 0;
-}
-
-.quadro-view.active {
-    visibility: visible;
-    opacity: 1;
-}
-
-
-/* ----------------------------------------- */
-/* GRÁFICO DE BARRAS */
-/* ----------------------------------------- */
-
-.grafico-barras {
-    width: 100%;
-    margin-top: 25px;
-}
-
-.barra {
-    background-color: #2f5b2f;
-    border: 2px solid #4d7c4d;
-    border-radius: 6px;
-    margin-bottom: 15px;
-    padding: 10px;
-    color: #eaffea;
-    font-family: "Zalando Sans Expanded", sans-serif;
-    font-size: 14px;
-    width: 0;
-    transition: width 1s ease;
-}
-
-.barra.ativo {
-    background-color: #2e7d32;
-}
-
-.barra.inativo {
-    background-color: #c62828;
-}
-
-/* ----------------------------------------- */
-/* GRÁFICOS – CENTRALIZAÇÃO PERFEITA */
-/* ----------------------------------------- */
-
-#view-graficos {
-    background: #23382e;
-}
-
-#view-graficos .graficos-container {
-    background-color: #1a2f1a;
-    border: 2px solid #3b5c3b;
-    border-radius: 14px;
-    padding: 35px;
-
-    width: 85%;
-    max-width: 900px;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    box-shadow: 0 0 25px rgba(0,0,0,0.7);
-}
-
-/* Barras */
-.grafico-barras {
-    width: 100%;
-    margin-top: 30px;
-}
-
+.grafico-barras { width: 100%; margin-top: 30px; }
 .barra {
     height: 38px;
     line-height: 38px;
     padding-left: 12px;
     font-weight: bold;
+    width: 0;
+    transition: width 1s ease;
+    border-radius: 6px;
 }
 
-/* Pizza */
-.grafico-pizza {
-    margin-top: 40px;
-}
+.barra.ativo { background-color: #2e7d32; }
+.barra.inativo { background-color: #c62828; }
 
-.pizza {
-    width: 240px;
-    height: 240px;
-    border-radius: 50%;
+.grafico-pizza { margin-top: 40px; display: flex; justify-content: center; }
+.pizza { width: 240px; height: 240px; border-radius: 50%; }
+
+/* GRÁFICOS - CENTRALIZAÇÃO */
+#view-graficos .graficos-container {
+    background-color: #1a2f1a;
+    border: 2px solid #3b5c3b;
+    border-radius: 14px;
+    padding: 35px;
+    width: 85%;
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 25px rgba(0,0,0,0.7);
 }
 
 /* ----------------------------------------- */
-/* RESPONSIVO */
-/* ----------------------------------------- */
-
-@media (max-width: 700px) {
-    .grafico-pizza {
-        flex-direction: column;
-    }
-
-    .pizza {
-        width: 180px;
-        height: 180px;
-    }
-}
-
-/* responsividade: quadro menor em telas pequenas */
-@media (max-width: 800px) {
-    .quadro-placeholder {
-        width: 90%;
-        height: 60%;
-        padding: 20px;
-    }
-}
-
-
-
-/* ----------------------------------------- */
-/* TABLET */
+/* RESPONSIVO / MOBILE / TABLET */
 /* ----------------------------------------- */
 @media (max-width: 1024px) {
-    .sidebar {
-        width: 280px;
-    }
-
-    .fundo-rolando {
-        left: 280px;
-        width: calc(100% - 280px);
-    }
-
-    /* Mostrar apenas capa1 e capa3 no carrossel */
-    .carousel img:nth-child(2) {
-        display: none;
-    }
+    .sidebar { width: 280px; }
+    .fundo-rolando { left: 280px; width: calc(100% - 280px); }
+    .carousel img:nth-child(2) { display: none; }
 }
 
-/* ----------------------------------------- */
-/* CELULAR */
-/* ----------------------------------------- */
+@media (max-width: 800px) {
+    .quadro-placeholder { width: 90%; height: 60%; padding: 20px; }
+}
+
+@media (max-width: 700px) {
+    .grafico-pizza { flex-direction: column; }
+    .pizza { width: 180px; height: 180px; }
+}
+
 @media (max-width: 600px) {
-    body {
-        overflow: auto;
-    }
+    body { overflow: auto; }
 
-    /* remove carrossel */
-    .carousel {
-        display: none;
-    }
+    .carousel { display: none; }
 
-    /* background fixo */
     .fundo-rolando {
         position: relative;
         left: 0;
@@ -506,9 +368,9 @@ audio {
         background-image: url("css/images/capa1.jpg");
         background-size: cover;
         background-position: center;
+        z-index: 1;
     }
 
-    /* sidebar centralizada */
     .sidebar {
         position: relative;
         width: 90%;
@@ -516,6 +378,8 @@ audio {
         margin: 40px auto;
         border-radius: 12px;
         background-color: rgba(26, 47, 26, 0.95);
+        z-index: 9999;
     }
-}
 
+    .cadastro-container-militar { overflow-x: auto; }
+}

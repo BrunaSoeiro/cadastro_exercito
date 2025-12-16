@@ -40,45 +40,49 @@
                 <img src="css/images/capa3.jpg" alt="Foto Militar 3">
             </div>
 
-            <!-- ABA REGISTROS -->
-            <div id="aba-registros" class="quadro-view" aria-hidden="true">
-                <div class="cadastro-container-militar">
-                    <h2 class="titulo-militar">Consulta de Registros</h2>
+<!-- ABA REGISTROS -->
+<div id="aba-registros" class="quadro-view" aria-hidden="true">
+    <div class="cadastro-container-militar">
+        <h2 class="titulo-militar">Consulta de Registros</h2>
 
-                    <input type="text" id="pesquisa" placeholder="Digite um nome..." class="input-militar">
+        <input type="text" id="pesquisa" placeholder="Digite um nome..." class="input-militar">
 
-                    <table class="tabela-militar" id="tabela-militar">
-                        <thead>
-                            <tr>
-                                <th>Nome</th>
-                                <th>CPF</th>
-                                <th>Nascimento</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tbody-militar"></tbody>
-                    </table>
-                </div>
-            </div>
+        <!-- Container responsivo da tabela -->
+        <div class="tabela-militar-container">
+            <table class="tabela-militar" id="tabela-militar">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>CPF</th>
+                        <th>Nascimento</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody-militar"></tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
-            <!-- ABA CADASTRO -->
-            <div id="aba-cadastro" class="quadro-view" aria-hidden="true">
-                <div class="cadastro-container-militar">
-                    <h2 class="titulo-militar">Cadastro Militar</h2>
+<!-- ABA CADASTRO -->
+<div id="aba-cadastro" class="quadro-view" aria-hidden="true">
+    <div class="cadastro-container-militar">
+        <h2 class="titulo-militar">Cadastro Militar</h2>
 
-                    <input type="text" id="cad-nome" class="input-militar" placeholder="Nome completo">
-                    <input type="text" id="cad-cpf" class="input-militar" placeholder="CPF">
-                    <input type="date" id="cad-nascimento" class="input-militar">
+        <input type="text" id="cad-nome" class="input-militar" placeholder="Nome completo">
+        <input type="text" id="cad-cpf" class="input-militar" placeholder="CPF">
+        <input type="date" id="cad-nascimento" class="input-militar">
 
-                    <select id="cad-status" class="input-militar">
-                        <option value="">Status</option>
-                        <option value="ATIVO">ATIVO</option>
-                        <option value="INATIVO">INATIVO</option>
-                    </select>
+        <select id="cad-status" class="input-militar">
+            <option value="">Status</option>
+            <option value="ATIVO">ATIVO</option>
+            <option value="INATIVO">INATIVO</option>
+        </select>
 
-                    <button id="btn-salvar" class="btn-militar">Salvar Cadastro</button>
-                </div>
-            </div>
+        <button id="btn-salvar" class="btn-militar">Salvar Cadastro</button>
+    </div>
+</div>
+
             <!-- VIEW GRÁFICOS -->
             <div id="view-graficos" class="quadro-view" aria-hidden="true">
                 <div class="graficos-container">
