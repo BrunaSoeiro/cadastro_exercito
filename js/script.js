@@ -184,3 +184,54 @@ document.addEventListener("DOMContentLoaded", () => {
         carregarTabelaMilitar(registrosExistentes);
     }
 });
+
+// BUSCA AUTOMÁTICA
+// --------------------------------------------
+
+document.getElementById("pesquisa").addEventListener("input", function () {
+    const texto = this.value.toLowerCase();
+
+    const filtrado = registrosMilitares.filter(reg =>
+        reg.nome.toLowerCase().includes(texto)
+    );
+
+    carregarTabelaMilitar(filtrado);
+});
+
+// ANIMAÇÃO DO GRÁFICO DE BARRAS
+window.addEventListener('load', () => {
+    document.querySelectorAll('.barra').forEach(barra => {
+        const valor = barra.getAttribute('data-valor');
+        barra.style.width = valor + '%';
+    });
+});
+
+
+// SISTEMA DE VIEWS (CADASTRO / GRÁFICOS)
+
+const navCadastro = document.getElementById('nav-cadastro');
+const navGraficos = document.getElementById('nav-graficos');
+const viewCadastro = document.getElementById('view-cadastro');
+const viewGraficos = document.getElementById('view-graficos');
+
+function trocarTela(tela) {
+    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+    tela.classList.add('active');
+}
+
+navCadastro.addEventListener('click', e => {
+    e.preventDefault();
+    trocarTela(viewCadastro);
+});
+
+navGraficos.addEventListener('click', e => {
+    e.preventDefault();
+    trocarTela(viewGraficos);
+
+    // anima as barras ao entrar
+    document.querySelectorAll('.barra').forEach(barra => {
+        barra.style.width = barra.dataset.valor + '%';
+    });
+});
+
+const views = document.querySelectorAll('.view');
