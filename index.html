@@ -16,16 +16,15 @@
         <div class="sidebar">
             <h2 class="titulo-sidebar"><img class="icone" src="css/images/favicon.png" alt="Icone"> Exército Brasileiro
             </h2>
+            <a href="#" id="link-carrossel">Home</a>
+            <a href="#" id="link-cadastro">Cadastro</a>
+            <a href="#" id="link-registros">Registros</a>
+            <a href="#" id="link-graficos">Gráficos</a>
             <a href="https://www.eb.mil.br" target="_blank">Site Oficial</a>
             <a href="https://www.gov.br/pt-br" target="_blank">Portal Gov</a>
             <a href="https://agencia.eb.mil.br" target="_blank">Notícias</a>
             <a href="https://www.defesa.gov.br" target="_blank">Ministério Defesa</a>
-            <a href="#" id="link-carrossel">Voltar ao Carrossel</a>
-            <a href="#" id="link-registros">Registros</a>
-            <a href="#" id="link-cadastro">Cadastro</a>
-            <a href="#" id="link-graficos">Gráficos</a>
-
-
+            
         </div>
 
     </header>
@@ -81,19 +80,21 @@
                 </div>
             </div>
             <!-- VIEW GRÁFICOS -->
-            <div id="view-graficos" class="view">
+            <div id="view-graficos" class="quadro-view" aria-hidden="true">
                 <div class="graficos-container">
                     <h2 class="titulo-militar">Estatísticas Militares</h2>
+            
                     <div class="grafico-barras">
-                        <div class="barra ativo" data-valor="70">Ativos</div>
-                        <div class="barra inativo" data-valor="30">Inativos</div>
+                        <div class="barra ativo">Ativos</div>
+                        <div class="barra inativo">Inativos</div>
                     </div>
+            
                     <div class="grafico-pizza">
                         <div class="pizza"></div>
                     </div>
                 </div>
             </div>
-
+            
             <!-- MÚSICA DE FUNDO -->
             <audio autoplay loop>
                 <source src="musica.mp3" type="audio/mpeg">

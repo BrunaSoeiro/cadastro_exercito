@@ -282,14 +282,6 @@ h2 {
     /* fica na frente de tudo */
 }
 
-/* responsividade: quadro menor em telas pequenas */
-@media (max-width: 800px) {
-    .quadro-placeholder {
-        width: 90%;
-        height: 60%;
-        padding: 20px;
-    }
-}
 
 /* ----------------------------------------- */
 /* MÚSICA DE FUNDO (ESCONDIDA) */
@@ -326,62 +318,146 @@ audio {
     }
 }
 
-/* GRÁFICO DE PIZZA */
+/* ----------------------------------------- */
+/* VIEW GRÁFICOS - CENTRALIZAÇÃO */
 /* ----------------------------------------- */
 
-.grafico-pizza {
+.quadro-view {
+    position: absolute;
+    inset: 0;
+    background: #23382e;
     display: flex;
     align-items: center;
-    gap: 25px;
+    justify-content: center;
+    z-index: 4;
+}
+
+.quadro-view .graficos-container {
+    background-color: #1a2f1a;
+    border: 2px solid #3b5c3b;
+    border-radius: 12px;
+    padding: 30px;
+    width: 90%;
+    max-width: 900px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 0 0 18px rgba(0,0,0,0.6);
+}
+
+.quadro-view {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.quadro-view.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+/* ----------------------------------------- */
+/* GRÁFICO DE BARRAS */
+/* ----------------------------------------- */
+
+.grafico-barras {
+    width: 100%;
+    margin-top: 25px;
+}
+
+.barra {
+    background-color: #2f5b2f;
+    border: 2px solid #4d7c4d;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    padding: 10px;
+    color: #eaffea;
+    font-family: "Zalando Sans Expanded", sans-serif;
+    font-size: 14px;
+    width: 0;
+    transition: width 1s ease;
+}
+
+.barra.ativo {
+    background-color: #2e7d32;
+}
+
+.barra.inativo {
+    background-color: #c62828;
+}
+
+/* ----------------------------------------- */
+/* GRÁFICOS – CENTRALIZAÇÃO PERFEITA */
+/* ----------------------------------------- */
+
+#view-graficos {
+    background: #23382e;
+}
+
+#view-graficos .graficos-container {
+    background-color: #1a2f1a;
+    border: 2px solid #3b5c3b;
+    border-radius: 14px;
+    padding: 35px;
+
+    width: 85%;
+    max-width: 900px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 0 0 25px rgba(0,0,0,0.7);
+}
+
+/* Barras */
+.grafico-barras {
+    width: 100%;
     margin-top: 30px;
-    flex-wrap: wrap;
+}
+
+.barra {
+    height: 38px;
+    line-height: 38px;
+    padding-left: 12px;
+    font-weight: bold;
+}
+
+/* Pizza */
+.grafico-pizza {
+    margin-top: 40px;
 }
 
 .pizza {
-    width: 200px;
-    height: 200px;
+    width: 240px;
+    height: 240px;
     border-radius: 50%;
-    background: conic-gradient(
-        #2e7d32 0% 70%,
-        #f9a825 70% 90%,
-        #c62828 90% 100%
-    );
-    box-shadow: 0 0 12px rgba(0,0,0,0.7);
 }
 
-.legenda {
-    list-style: none;
-    padding: 0;
-    font-family: "Zalando Sans Expanded", sans-serif;
+/* ----------------------------------------- */
+/* RESPONSIVO */
+/* ----------------------------------------- */
+
+@media (max-width: 700px) {
+    .grafico-pizza {
+        flex-direction: column;
+    }
+
+    .pizza {
+        width: 180px;
+        height: 180px;
+    }
 }
 
-.legenda li {
-    margin-bottom: 10px;
-    color: #eaffea;
-}
-
-.cor {
-    display: inline-block;
-    width: 14px;
-    height: 14px;
-    margin-right: 8px;
-    border-radius: 3px;
-}
-
-.cor.ativa { background: #2e7d32; }
-.cor.reserva { background: #f9a825; }
-.cor.reformado { background: #c62828; }
-
-.carousel {
-    display: block;
-}
-
-.quadro-view,
-.view {
-    display: none;
-}
-
-.quadro-view.active,
-.view.active {
-    display: flex;
+/* responsividade: quadro menor em telas pequenas */
+@media (max-width: 800px) {
+    .quadro-placeholder {
+        width: 90%;
+        height: 60%;
+        padding: 20px;
+    }
 }

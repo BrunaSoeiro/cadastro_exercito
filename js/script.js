@@ -52,11 +52,6 @@ linkGraficos.addEventListener('click', e => {
     e.preventDefault();
     esconderTudo();
     viewGraficos.classList.add('active');
-
-    // anima barras
-    document.querySelectorAll('.barra').forEach(barra => {
-        barra.style.width = barra.dataset.valor + '%';
-    });
 });
 
 linkCarrossel.addEventListener('click', e => {
