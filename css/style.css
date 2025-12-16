@@ -325,3 +325,58 @@ audio {
         opacity: 0;
     }
 }
+
+/* GRÁFICO DE PIZZA */
+/* ----------------------------------------- */
+
+.grafico-pizza {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.pizza {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: conic-gradient(
+        #2e7d32 0% 70%,
+        #f9a825 70% 90%,
+        #c62828 90% 100%
+    );
+    box-shadow: 0 0 12px rgba(0,0,0,0.7);
+}
+
+.legenda {
+    list-style: none;
+    padding: 0;
+    font-family: "Zalando Sans Expanded", sans-serif;
+}
+
+.legenda li {
+    margin-bottom: 10px;
+    color: #eaffea;
+}
+
+.cor {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin-right: 8px;
+    border-radius: 3px;
+}
+
+.cor.ativa { background: #2e7d32; }
+.cor.reserva { background: #f9a825; }
+.cor.reformado { background: #c62828; }
+
+
+.view, .carousel {
+    display: none;
+  }
+  
+  .view.active, .carousel.active {
+    display: block;
+  }
