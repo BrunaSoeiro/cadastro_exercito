@@ -24,7 +24,7 @@
             <a href="https://www.gov.br/pt-br" target="_blank">Portal Gov</a>
             <a href="https://agencia.eb.mil.br" target="_blank">Notícias</a>
             <a href="https://www.defesa.gov.br" target="_blank">Ministério Defesa</a>
-            
+
         </div>
 
     </header>
@@ -40,68 +40,68 @@
                 <img src="css/images/capa3.jpg" alt="Foto Militar 3">
             </div>
 
-<!-- ABA REGISTROS -->
-<div id="aba-registros" class="quadro-view" aria-hidden="true">
-    <div class="cadastro-container-militar">
-        <h2 class="titulo-militar">Consulta de Registros</h2>
+            <!-- ABA REGISTROS -->
+            <div id="aba-registros" class="quadro-view" aria-hidden="true">
+                <div class="cadastro-container-militar">
+                    <h2 class="titulo-militar">Consulta de Registros</h2>
 
-        <input type="text" id="pesquisa" placeholder="Digite um nome..." class="input-militar">
+                    <input type="text" id="pesquisa" placeholder="Digite um nome..." class="input-militar">
 
-        <!-- Container responsivo da tabela -->
-        <div class="tabela-militar-container">
-            <table class="tabela-militar" id="tabela-militar">
-                <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>CPF</th>
-                        <th>Nascimento</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody id="tbody-militar"></tbody>
-            </table>
-        </div>
-    </div>
-</div>
+                    <!-- Container responsivo da tabela -->
+                    <div class="tabela-militar-container">
+                        <table class="tabela-militar" id="tabela-militar">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>CPF</th>
+                                    <th>Nascimento</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody-militar"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
 
-<!-- ABA CADASTRO -->
-<div id="aba-cadastro" class="quadro-view" aria-hidden="true">
-    <div class="cadastro-container-militar">
-        <h2 class="titulo-militar">Cadastro Militar</h2>
+            <!-- ABA CADASTRO -->
+            <div id="aba-cadastro" class="quadro-view" aria-hidden="true">
+                <div class="cadastro-container-militar">
+                    <h2 class="titulo-militar">Cadastro Militar</h2>
 
-        <label class="label-militar">Nome completo:</label>
-        <input type="text" id="cad-nome" class="input-militar" placeholder="Digite seu nome...">
-        <label class="label-militar">CPF:</label>
-        <input type="text" id="cad-cpf" class="input-militar" placeholder="Digite seu CPF...">
-        <label class="label-militar">Data de nascimento:</label>
-        <input type="date" id="cad-nascimento" class="input-militar">
-        <label class="label-militar">Situação Militar:</label>       
-        <select id="cad-status" class="input-militar">
-            <option value="">Status</option>
-            <option value="ATIVO">ATIVO</option>
-            <option value="INATIVO">INATIVO</option>
-        </select>
+                    <label class="label-militar">Nome completo:</label>
+                    <input type="text" id="cad-nome" class="input-militar" placeholder="Digite seu nome...">
+                    <label class="label-militar">CPF:</label>
+                    <input type="text" id="cad-cpf" class="input-militar" placeholder="Digite seu CPF...">
+                    <label class="label-militar">Data de nascimento:</label>
+                    <input type="date" id="cad-nascimento" class="input-militar">
+                    <label class="label-militar">Situação Militar:</label>
+                    <select id="cad-status" class="input-militar">
+                        <option value="">Status</option>
+                        <option value="ATIVO">ATIVO</option>
+                        <option value="INATIVO">INATIVO</option>
+                    </select>
 
-        <button id="btn-salvar" class="btn-militar">Salvar Cadastro</button>
-    </div>
-</div>
+                    <button id="btn-salvar" class="btn-militar">Salvar Cadastro</button>
+                </div>
+            </div>
 
             <!-- VIEW GRÁFICOS -->
             <div id="view-graficos" class="quadro-view" aria-hidden="true">
                 <div class="graficos-container">
                     <h2 class="titulo-militar">Situação Militar</h2>
-            
+
                     <div class="grafico-barras">
                         <div class="barra ativo">Ativos</div>
                         <div class="barra inativo">Inativos</div>
                     </div>
-            
+
                     <div class="grafico-pizza">
                         <div class="pizza"></div>
                     </div>
                 </div>
             </div>
-            
+
             <!-- MÚSICA DE FUNDO -->
             <audio autoplay loop>
                 <source src="musica.mp3" type="audio/mpeg">
@@ -112,6 +112,14 @@
         <p>© 2025 Onça Tec — Todos os direitos reservados.</p>
     </footer>
 
+    <!-- POPUP DE SUCESSO -->
+    <div id="popup-sucesso" class="popup-overlay" aria-hidden="true">
+        <div class="popup-box">
+            <h3>Cadastro realizado</h3>
+            <p>O cadastro foi salvo com sucesso.</p>
+            <button id="popup-ok" class="btn-militar">OK</button>
+        </div>
+    </div>
 
     <script src="js/script.js"></script>
 

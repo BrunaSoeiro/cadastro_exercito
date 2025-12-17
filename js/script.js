@@ -1,15 +1,15 @@
 // ================================
 // SELETORES
 // ================================
-const linkRegistros  = document.getElementById('link-registros');
-const linkCadastro   = document.getElementById('link-cadastro');
-const linkCarrossel  = document.getElementById('link-carrossel');
-const linkGraficos   = document.getElementById('link-graficos');
+const linkRegistros = document.getElementById('link-registros');
+const linkCadastro = document.getElementById('link-cadastro');
+const linkCarrossel = document.getElementById('link-carrossel');
+const linkGraficos = document.getElementById('link-graficos');
 
-const abaRegistros   = document.getElementById('aba-registros');
-const abaCadastro    = document.getElementById('aba-cadastro');
-const viewGraficos   = document.getElementById('view-graficos');
-const carousel       = document.getElementById('carousel');
+const abaRegistros = document.getElementById('aba-registros');
+const abaCadastro = document.getElementById('aba-cadastro');
+const viewGraficos = document.getElementById('view-graficos');
+const carousel = document.getElementById('carousel');
 
 // ================================
 // CONTROLE DE TELAS
@@ -137,10 +137,10 @@ document.getElementById('pesquisa').addEventListener('input', function () {
 // CADASTRO
 // ================================
 document.getElementById('btn-salvar').addEventListener('click', () => {
-    const nome       = document.getElementById('cad-nome').value.trim();
-    const cpf        = document.getElementById('cad-cpf').value.trim();
+    const nome = document.getElementById('cad-nome').value.trim();
+    const cpf = document.getElementById('cad-cpf').value.trim();
     const nascimento = document.getElementById('cad-nascimento').value;
-    const status     = document.getElementById('cad-status').value;
+    const status = document.getElementById('cad-status').value;
 
     if (!nome || !cpf || !nascimento || !status) {
         alert('Preencha todos os campos.');
@@ -148,15 +148,28 @@ document.getElementById('btn-salvar').addEventListener('click', () => {
     }
 
     adicionarRegistro({ nome, cpf, nascimento, status });
-    atualizarGraficos(); 
+    atualizarGraficos();
 
     document.getElementById('cad-nome').value = '';
     document.getElementById('cad-cpf').value = '';
     document.getElementById('cad-nascimento').value = '';
     document.getElementById('cad-status').value = '';
 
-    alert('Cadastro salvo com sucesso!');
+    const popup = document.getElementById('popup-sucesso');
+    popup.classList.add('active');
+    popup.setAttribute('aria-hidden', 'false');
+    
+
 });
+
+const popup = document.getElementById('popup-sucesso');
+const btnOk = document.getElementById('popup-ok');
+
+btnOk.addEventListener('click', () => {
+    popup.classList.remove('active');
+    popup.setAttribute('aria-hidden', 'true');
+});
+
 
 // ================================
 // GRÁFICOS DINÂMICOS
@@ -165,16 +178,16 @@ function atualizarGraficos() {
     const lista = obterRegistros();
     const total = lista.length;
 
-    const ativos   = lista.filter(r => r.status === 'ATIVO').length;
+    const ativos = lista.filter(r => r.status === 'ATIVO').length;
     const inativos = lista.filter(r => r.status === 'INATIVO').length;
 
-    const pAtivo   = total ? Math.round((ativos / total) * 100) : 0;
+    const pAtivo = total ? Math.round((ativos / total) * 100) : 0;
     const pInativo = total ? Math.round((inativos / total) * 100) : 0;
 
-    document.querySelector('.barra.ativo').style.width   = pAtivo + '%';
+    document.querySelector('.barra.ativo').style.width = pAtivo + '%';
     document.querySelector('.barra.inativo').style.width = pInativo + '%';
 
-    document.querySelector('.barra.ativo').innerText   = `Ativos ${pAtivo}%`;
+    document.querySelector('.barra.ativo').innerText = `Ativos ${pAtivo}%`;
     document.querySelector('.barra.inativo').innerText = `Inativos ${pInativo}%`;
 
     document.querySelector('.pizza').style.background =
