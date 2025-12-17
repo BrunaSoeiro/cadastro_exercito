@@ -32,13 +32,26 @@
     <main>
         <!-- ÁREA PRINCIPAL (substitui sua .fundo-rolando atual) -->
         <div id="main-area" class="fundo-rolando">
+   
             <!-- CARROSSEL (padrão) -->
-            <!-- CARROSSEL (padrão) -->
-            <div id="carousel" class="carousel">
-                <img src="css/images/capa1.jpg" alt="Foto Militar 1">
-                <img src="css/images/capa2.jpg" alt="Foto Militar 2">
-                <img src="css/images/capa3.jpg" alt="Foto Militar 3">
-            </div>
+          <div id="carousel" class="carousel">
+    <!-- Imagem 1 -->
+    <img src="css/images/capa1.jpg" alt="Foto Militar 1">
+
+    <!-- Imagem 2 (troca no tablet) -->
+    <picture>
+        <!-- TABLET -->
+        <source 
+            media="(max-width: 1024px)" 
+            srcset="css/images/Foto_Carrosel_cel_3.jpeg">
+
+        <!-- DESKTOP -->
+        <img src="css/images/capa2.jpg" alt="Foto Militar 2">
+    </picture>
+
+    <!-- Imagem 3 -->
+    <img src="css/images/capa3.jpg" alt="Foto Militar 3">
+</div>
 
             <!-- ABA REGISTROS -->
             <div id="aba-registros" class="quadro-view" aria-hidden="true">
