@@ -11,6 +11,8 @@ const abaCadastro = document.getElementById('aba-cadastro');
 const viewGraficos = document.getElementById('view-graficos');
 const carousel = document.getElementById('carousel');
 
+const btnSalvar = document.getElementById('btn-salvar');
+
 // ================================
 // CONTROLE DE TELAS
 // ================================
@@ -92,18 +94,51 @@ function carregarTabela(lista) {
 
     lista.sort((a, b) => parseData(a.nascimento) - parseData(b.nascimento));
 
-    lista.forEach(r => {
+    lista.forEach((r, index) => {
         tbody.innerHTML += `
             <tr>
                 <td>${r.nome}</td>
                 <td>${r.cpf}</td>
                 <td>${formatarData(r.nascimento)}</td>
                 <td>${r.status}</td>
+                <td>
+                    <button class="btn-editar" data-index="${index}">Editar</button>
+                </td>
             </tr>
         `;
     });
 
+    // Adicionar evento nos botões Editar
+    document.querySelectorAll('.btn-editar').forEach(btn => {
+        btn.addEventListener('click', e => {
+            const idx = e.target.getAttribute('data-index');
+            carregarFormularioParaEdicao(idx);
+        });
+    });
+
     atualizarGraficos(); // 🔥 SEMPRE sincroniza
+}
+
+// ================================
+// FUNÇÃO EDITAR - RAFAEL
+// ================================
+let indiceEditando = null;
+
+function carregarFormularioParaEdicao(index) {
+    const registros = obterRegistros();
+    const registro = registros[index];
+
+    document.getElementById('cad-nome').value = registro.nome;
+    document.getElementById('cad-cpf').value = registro.cpf;
+    document.getElementById('cad-nascimento').value = registro.nascimento;
+    document.getElementById('cad-status').value = registro.status;
+
+    indiceEditando = index;
+    btnSalvar.innerText = 'Atualizar Registro';
+
+    esconderTudo();
+    abaCadastro.classList.add('active');
+    abaCadastro.setAttribute('aria-hidden', 'false');
 }
 
 // ================================
@@ -139,7 +174,7 @@ document.getElementById('pesquisa').addEventListener('input', function () {
 // ================================
 // CADASTRO
 // ================================
-document.getElementById('btn-salvar').addEventListener('click', () => {
+btnSalvar.addEventListener('click', () => {
     const nome = document.getElementById('cad-nome').value.trim();
     const cpf = document.getElementById('cad-cpf').value.trim();
     const nascimento = document.getElementById('cad-nascimento').value;
@@ -150,12 +185,26 @@ document.getElementById('btn-salvar').addEventListener('click', () => {
         return;
     }
 
-    adicionarRegistro({ nome, cpf, nascimento, status });
+    const registros = obterRegistros();
 
+    if (indiceEditando !== null) {
+        // Atualizar registro existente
+        registros[indiceEditando] = { nome, cpf, nascimento, status };
+        salvarRegistros(registros);
+        indiceEditando = null;
+        btnSalvar.innerText = 'Salvar Cadastro';
+    } else {
+        // Novo registro
+        adicionarRegistro({ nome, cpf, nascimento, status });
+    }
+
+    // Limpar formulário
     document.getElementById('cad-nome').value = '';
     document.getElementById('cad-cpf').value = '';
     document.getElementById('cad-nascimento').value = '';
     document.getElementById('cad-status').value = '';
+
+    carregarTabela(obterRegistros());
 
     const popup = document.getElementById('popup-sucesso');
     popup.classList.add('active');
@@ -221,7 +270,6 @@ const registrosIniciais = [
     { nome: 'Renata Guedes', cpf: '10111213141', nascimento: '1999-12-09', status: 'ATIVO' },
     { nome: 'Luana Lopes', cpf: '87447569845', nascimento: '2001-07-09', status: 'ATIVO' }
 ];
-
 
 document.addEventListener('DOMContentLoaded', () => {
     const registros = obterRegistros();
