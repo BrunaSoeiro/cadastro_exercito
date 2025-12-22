@@ -230,7 +230,30 @@ input[type="date"] {
     /* remove barra horizontal */
     word-wrap: break-word;
     /* quebra texto grande */
+    max-height: 75vh;          /* limita altura do quadro */
+    overflow-y: auto;          /* ATIVA barra de rolagem vertical */
 }
+
+
+
+/* SCROLLBAR CUSTOMIZADA */
+.cadastro-container-militar::-webkit-scrollbar {
+    width: 8px;
+}
+
+.cadastro-container-militar::-webkit-scrollbar-track {
+    background: #1a2f1a;
+}
+
+.cadastro-container-militar::-webkit-scrollbar-thumb {
+    background-color: #3f7a3f;
+    border-radius: 10px;
+}
+
+.cadastro-container-militar::-webkit-scrollbar-thumb:hover {
+    background-color: #5fa15f;
+}
+
 
 .titulo-militar {
     text-align: center;
