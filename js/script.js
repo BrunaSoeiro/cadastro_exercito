@@ -52,6 +52,7 @@ linkGraficos.addEventListener('click', e => {
     e.preventDefault();
     esconderTudo();
     viewGraficos.classList.add('active');
+    atualizarGraficos();
 });
 
 linkCarrossel.addEventListener('click', e => {
@@ -101,6 +102,8 @@ function carregarTabela(lista) {
             </tr>
         `;
     });
+
+    atualizarGraficos(); // 🔥 SEMPRE sincroniza
 }
 
 // ================================
@@ -148,7 +151,6 @@ document.getElementById('btn-salvar').addEventListener('click', () => {
     }
 
     adicionarRegistro({ nome, cpf, nascimento, status });
-    atualizarGraficos();
 
     document.getElementById('cad-nome').value = '';
     document.getElementById('cad-cpf').value = '';
@@ -158,10 +160,11 @@ document.getElementById('btn-salvar').addEventListener('click', () => {
     const popup = document.getElementById('popup-sucesso');
     popup.classList.add('active');
     popup.setAttribute('aria-hidden', 'false');
-    
-
 });
 
+// ================================
+// POPUP
+// ================================
 const popup = document.getElementById('popup-sucesso');
 const btnOk = document.getElementById('popup-ok');
 
@@ -169,7 +172,6 @@ btnOk.addEventListener('click', () => {
     popup.classList.remove('active');
     popup.setAttribute('aria-hidden', 'true');
 });
-
 
 // ================================
 // GRÁFICOS DINÂMICOS
@@ -194,13 +196,9 @@ function atualizarGraficos() {
         `conic-gradient(#2e7d32 0% ${pAtivo}%, #c62828 ${pAtivo}% 100%)`;
 }
 
-// atualiza sempre que abrir gráficos
-linkGraficos.addEventListener('click', atualizarGraficos);
-
 // ================================
 // INICIALIZAÇÃO
 // ================================
-
 const registrosIniciais = [
     { nome: 'Aline Souza', cpf: '58746941203', nascimento: '1965-09-04', status: 'INATIVO' },
     { nome: 'Fagner Pinheiro', cpf: '54789632104', nascimento: '1975-06-22', status: 'INATIVO' },
