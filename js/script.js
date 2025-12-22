@@ -200,16 +200,26 @@ linkGraficos.addEventListener('click', atualizarGraficos);
 // ================================
 // INICIALIZAÇÃO
 // ================================
+
+const registrosIniciais = [
+    { nome: 'Aline Souza', cpf: '58746941203', nascimento: '1965-09-04', status: 'INATIVO' },
+    { nome: 'Fagner Pinheiro', cpf: '54789632104', nascimento: '1975-06-22', status: 'INATIVO' },
+    { nome: 'Rodolfo Mendes', cpf: '56987423514', nascimento: '1977-09-08', status: 'INATIVO' },
+    { nome: 'Gabriele Figueiredo', cpf: '58741369820', nascimento: '1978-09-06', status: 'INATIVO' },
+    { nome: 'João da Silva', cpf: '12345678900', nascimento: '1980-10-10', status: 'ATIVO' },
+    { nome: 'Samuel Gomes', cpf: '78569412301', nascimento: '1985-07-15', status: 'ATIVO' },
+    { nome: 'Lucas Mendes', cpf: '85475632141', nascimento: '1987-03-05', status: 'INATIVO' },
+    { nome: 'Rafael Neves', cpf: '10856947102', nascimento: '1988-06-08', status: 'ATIVO' },
+    { nome: 'Hugo Castro', cpf: '78569841208', nascimento: '1988-12-30', status: 'ATIVO' },
+    { nome: 'Luana Lopes', cpf: '87447569845', nascimento: '2001-07-09', status: 'ATIVO' }
+];
+
 document.addEventListener('DOMContentLoaded', () => {
     const registros = obterRegistros();
 
     if (registros.length === 0) {
-        adicionarRegistro({
-            nome: 'João da Silva',
-            cpf: '12345678900',
-            nascimento: '1980-10-10',
-            status: 'ATIVO'
-        });
+        salvarRegistros(registrosIniciais);
+        carregarTabela(registrosIniciais);
     } else {
         carregarTabela(registros);
     }
