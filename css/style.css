@@ -354,7 +354,7 @@ input[type="date"] {
 }
 
 /* ----------------------------------------- */
-/* MÚSICA DE FUNDO (ESCONDIDA) */
+/* MÚSICA DE FUNDO (ESCONDIDA) - DENIS */
 /* ----------------------------------------- */
 audio {
     display: none;
@@ -485,7 +485,7 @@ audio {
 
 
 /* ----------------------------------------- */
-/* RESPONSIVO / MOBILE / TABLET */
+/* RESPONSIVO / MOBILE / TABLET RAFAEL */ 
 /* ----------------------------------------- */
 @media (max-width: 1024px) {
     .sidebar {
@@ -553,4 +553,21 @@ audio {
     .cadastro-container-militar {
         overflow-x: auto;
     }
+}
+/* ============================
+   Estilo do botão Editar - RAFAEL
+============================ */
+.btn-editar {
+    background-color: #1976d2;
+    color: #fff;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: 0.2s;
+}
+
+.btn-editar:hover {
+    background-color: #0d47a1;
 }
