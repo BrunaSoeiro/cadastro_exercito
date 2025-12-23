@@ -245,31 +245,6 @@ function atualizarGraficos() {
         `conic-gradient(#2e7d32 0% ${pAtivo}%, #c62828 ${pAtivo}% 100%)`;
 }
 
-// ================================
-// INICIALIZAÇÃO
-// ================================
-const registrosIniciais = [
-    { nome: 'Aline Souza', cpf: '58746941203', nascimento: '1965-09-04', status: 'INATIVO' },
-    { nome: 'Carlos Almeida', cpf: '11122233344', nascimento: '1968-02-15', status: 'INATIVO' },
-    { nome: 'Fagner Pinheiro', cpf: '54789632104', nascimento: '1975-06-22', status: 'INATIVO' },
-    { nome: 'Rodolfo Mendes', cpf: '56987423514', nascimento: '1977-09-08', status: 'INATIVO' },
-    { nome: 'Gabriele Figueiredo', cpf: '58741369820', nascimento: '1978-09-06', status: 'INATIVO' },
-    { nome: 'João da Silva', cpf: '12345678900', nascimento: '1980-10-10', status: 'ATIVO' },
-    { nome: 'Marcos Teixeira', cpf: '22233344455', nascimento: '1982-04-18', status: 'ATIVO' },
-    { nome: 'Samuel Gomes', cpf: '78569412301', nascimento: '1985-07-15', status: 'ATIVO' },
-    { nome: 'Lucas Mendes', cpf: '85475632141', nascimento: '1987-03-05', status: 'INATIVO' },
-    { nome: 'Rafael Neves', cpf: '10856947102', nascimento: '1988-06-08', status: 'ATIVO' },
-    { nome: 'Hugo Castro', cpf: '78569841208', nascimento: '1988-12-30', status: 'ATIVO' },
-    { nome: 'Daniel Rocha', cpf: '33344455566', nascimento: '1990-01-12', status: 'ATIVO' },
-    { nome: 'Fernanda Lima', cpf: '44455566677', nascimento: '1991-05-27', status: 'ATIVO' },
-    { nome: 'Bruno Pacheco', cpf: '55566677788', nascimento: '1993-08-19', status: 'INATIVO' },
-    { nome: 'Patrícia Nunes', cpf: '66677788899', nascimento: '1994-11-02', status: 'ATIVO' },
-    { nome: 'Eduardo Rangel', cpf: '77788899900', nascimento: '1996-09-14', status: 'ATIVO' },
-    { nome: 'Camila Torres', cpf: '88899900011', nascimento: '1997-03-22', status: 'INATIVO' },
-    { nome: 'Felipe Araujo', cpf: '99900011122', nascimento: '1998-06-01', status: 'ATIVO' },
-    { nome: 'Renata Guedes', cpf: '10111213141', nascimento: '1999-12-09', status: 'ATIVO' },
-    { nome: 'Luana Lopes', cpf: '87447569845', nascimento: '2001-07-09', status: 'ATIVO' }
-];
 
 document.addEventListener('DOMContentLoaded', () => {
     const registros = obterRegistros();
