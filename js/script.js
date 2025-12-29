@@ -1,32 +1,3 @@
-let registrosFixos = [
-    { nome: "João da Silva", cpf: "529.982.247-25", nascimento: "1990-05-12", status: "ATIVO" },
-    { nome: "Carlos Pereira", cpf: "168.995.350-09", nascimento: "1988-03-20", status: "INATIVO" },
-    { nome: "Rafael Santos", cpf: "987.654.321-00", nascimento: "1995-07-10", status: "ATIVO" },
-    { nome: "Lucas Oliveira", cpf: "746.971.314-01", nascimento: "1992-11-02", status: "ATIVO" },
-    { nome: "Marcos Lima", cpf: "295.379.148-93", nascimento: "1985-01-18", status: "INATIVO" },
-    { nome: "Pedro Almeida", cpf: "073.132.906-06", nascimento: "1998-06-30", status: "ATIVO" },
-    { nome: "Thiago Costa", cpf: "514.470.857-36", nascimento: "1993-09-14", status: "INATIVO" },
-    { nome: "Felipe Rocha", cpf: "153.509.460-56", nascimento: "1989-12-25", status: "ATIVO" },
-    { nome: "Bruno Martins", cpf: "286.255.878-87", nascimento: "1996-04-08", status: "ATIVO" },
-    { nome: "André Teixeira", cpf: "362.871.580-04", nascimento: "1987-08-21", status: "INATIVO" },
-
-    { nome: "Daniel Farias", cpf: "704.602.160-23", nascimento: "1991-02-17", status: "ATIVO" },
-    { nome: "Gustavo Nogueira", cpf: "417.821.950-05", nascimento: "1994-10-09", status: "INATIVO" },
-    { nome: "Eduardo Pacheco", cpf: "830.168.320-09", nascimento: "1986-07-01", status: "ATIVO" },
-    { nome: "Victor Barros", cpf: "071.932.300-03", nascimento: "1999-05-05", status: "ATIVO" },
-    { nome: "Leonardo Azevedo", cpf: "246.592.710-08", nascimento: "1990-03-03", status: "INATIVO" },
-    { nome: "Henrique Guedes", cpf: "936.203.460-02", nascimento: "1997-06-16", status: "ATIVO" },
-    { nome: "Matheus Rangel", cpf: "125.418.320-30", nascimento: "1992-09-27", status: "INATIVO" },
-    { nome: "Igor Freitas", cpf: "398.475.610-08", nascimento: "1984-12-11", status: "ATIVO" },
-    { nome: "Diego Rezende", cpf: "681.400.970-05", nascimento: "1995-01-29", status: "INATIVO" },
-    { nome: "Alexandre Mota", cpf: "502.978.610-06", nascimento: "1983-04-19", status: "ATIVO" },
-
-    { nome: "Paulo Ribeiro", cpf: "746.824.890-06", nascimento: "1996-07-07", status: "ATIVO" },
-    { nome: "Rodrigo Batista", cpf: "089.293.240-90", nascimento: "1989-10-23", status: "INATIVO" },
-    { nome: "Fernando Cunha", cpf: "431.968.750-00", nascimento: "1991-08-13", status: "ATIVO" }
-];
-
-
 
 function obterRegistros() {
     return registrosFixos;

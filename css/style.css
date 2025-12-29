@@ -28,7 +28,7 @@ body {
     gap: 25px;
     box-shadow: 3px 0 8px rgba(0, 0, 0, 0.4);
     z-index: 9999;
-    /* 🔥 garantir clique na sidebar */
+    align-items: center;
 }
 
 .sidebar .icone {
