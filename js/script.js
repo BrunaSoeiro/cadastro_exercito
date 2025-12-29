@@ -36,6 +36,27 @@ function salvarRegistros(lista) {
     registrosFixos = lista;
 }
 
+
+function carregarEstados() {
+    fetch('https://brasilapi.com.br/api/ibge/uf/v1')
+        .then(resposta => resposta.json())
+        .then(estados => {
+            const selectEstado = document.getElementById('cad-estado');
+            selectEstado.innerHTML = '<option value="">Selecione o estado</option>';
+
+            estados.forEach(uf => {
+                const option = document.createElement('option');
+                option.value = uf.sigla;
+                option.textContent = `${uf.sigla} - ${uf.nome}`;
+                selectEstado.appendChild(option);
+            });
+        })
+        .catch(() => {
+            alert('Erro ao carregar estados.');
+        });
+}
+
+
 // ====
 
 // ================================
@@ -287,6 +308,8 @@ function atualizarGraficos() {
 
 
 document.addEventListener('DOMContentLoaded', () => {
+    carregarEstados();
     carregarTabela(obterRegistros());
 });
+
 
