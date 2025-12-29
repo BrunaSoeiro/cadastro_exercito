@@ -43,11 +43,11 @@ body {
 }
 
 
-.sidebar a {
-    text-decoration: none;
-    color: #b8ffb8;
-    padding: 12px 20px;
+.sidebar a :not(.btn) {
     background-color: #244224;
+    color: #b8ffb8;
+    text-decoration: none;
+    padding: 12px 20px;
     border-radius: 6px;
     margin: 0 20px;
     text-align: center;
