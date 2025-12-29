@@ -161,6 +161,7 @@ function carregarTabela(lista) {
                 <td>${r.nome}</td>
                 <td>${r.cpf}</td>
                 <td>${formatarData(r.nascimento)}</td>
+                <td>${r.estado}</td>
                 <td>${r.status}</td>
                 <td>
                     <button class="btn-editar" data-index="${index}">Editar</button>
@@ -192,6 +193,7 @@ function carregarFormularioParaEdicao(index) {
     document.getElementById('cad-nome').value = registro.nome;
     document.getElementById('cad-cpf').value = registro.cpf;
     document.getElementById('cad-nascimento').value = registro.nascimento;
+    document.getElementById('cad-estado').value = registro.estado;
     document.getElementById('cad-status').value = registro.status;
 
     indiceEditando = index;
@@ -239,24 +241,26 @@ btnSalvar.addEventListener('click', () => {
     const nome = document.getElementById('cad-nome').value.trim();
     const cpf = document.getElementById('cad-cpf').value.trim();
     const nascimento = document.getElementById('cad-nascimento').value;
+    const estado = document.getElementById('cad-estado').value;
     const status = document.getElementById('cad-status').value;
 
-    if (!nome || !cpf || !nascimento || !status) {
-        alert('Preencha todos os campos.');
-        return;
-    }
+if (!nome || !cpf || !nascimento || !status || !estado) {
+    alert('Preencha todos os campos.');
+    return;
+}
+
 
     const registros = obterRegistros();
 
     if (indiceEditando !== null) {
         // Atualizar registro existente
-        registros[indiceEditando] = { nome, cpf, nascimento, status };
+        registros[indiceEditando] = { nome, cpf, nascimento, status, estado };
         salvarRegistros(registros);
         indiceEditando = null;
         btnSalvar.innerText = 'Salvar Cadastro';
     } else {
         // Novo registro
-        adicionarRegistro({ nome, cpf, nascimento, status });
+        adicionarRegistro({ nome, cpf, nascimento, status, estado });
     }
 
     // Limpar formulário
