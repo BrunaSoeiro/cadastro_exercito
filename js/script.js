@@ -290,3 +290,10 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+document.addEventListener("click", () => {
+    const audio = document.getElementById("hino");
+
+    if (audio.paused) {
+        audio.play().catch(() => {});
+    }
+}, { once: true });
