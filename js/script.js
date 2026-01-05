@@ -7,6 +7,9 @@ function salvarRegistros(lista) {
     registrosFixos = lista;
 }
 
+// ================================
+// API -  DAVI
+// ================================
 
 function carregarEstados() {
     fetch('https://brasilapi.com.br/api/ibge/uf/v1')
@@ -28,10 +31,10 @@ function carregarEstados() {
 }
 
 
-// ====
+
 
 // ================================
-// SELETORES
+// SELETORES - BRUNA
 // ================================
 const linkRegistros = document.getElementById('link-registros');
 const linkCadastro = document.getElementById('link-cadastro');
@@ -46,7 +49,7 @@ const carousel = document.getElementById('carousel');
 const btnSalvar = document.getElementById('btn-salvar');
 
 // ================================
-// CONTROLE DE TELAS
+// CONTROLE DE TELAS - BRUNA
 // ================================
 function esconderTudo() {
     abaCadastro.classList.remove('active');
@@ -66,7 +69,7 @@ function mostrarCarrossel() {
 }
 
 // ================================
-// EVENTOS SIDEBAR
+// EVENTOS SIDEBAR - BRUNA
 // ================================
 linkCadastro.addEventListener('click', e => {
     e.preventDefault();
@@ -94,13 +97,12 @@ linkCarrossel.addEventListener('click', e => {
     mostrarCarrossel();
 });
 
-// ESC volta ao carrossel
 document.addEventListener('keydown', e => {
     if (e.key === 'Escape') mostrarCarrossel();
 });
 
 // ================================
-// STORAGE
+// REGISTROS - BRUNA
 // ================================
 function obterRegistros() {
     return JSON.parse(localStorage.getItem('registrosMilitares')) || [];
@@ -118,7 +120,7 @@ function adicionarRegistro(registro) {
 }
 
 // ================================
-// TABELA
+// TABELA - CLYSTEN
 // ================================
 function carregarTabela(lista) {
     const tbody = document.getElementById('tbody-militar');
@@ -141,7 +143,7 @@ function carregarTabela(lista) {
         `;
     });
 
-    // Adicionar evento nos botões Editar
+   
     document.querySelectorAll('.btn-editar').forEach(btn => {
         btn.addEventListener('click', e => {
             const idx = e.target.getAttribute('data-index');
@@ -149,7 +151,7 @@ function carregarTabela(lista) {
         });
     });
 
-    atualizarGraficos(); // 🔥 SEMPRE sincroniza
+    atualizarGraficos(); 
 }
 
 // ================================
@@ -176,7 +178,7 @@ function carregarFormularioParaEdicao(index) {
 }
 
 // ================================
-// DATAS
+// DATAS - RAFAEL
 // ================================
 function formatarData(data) {
     if (data.includes('-')) {
@@ -195,7 +197,7 @@ function parseData(data) {
 }
 
 // ================================
-// BUSCA
+// BUSCA - CLYSTEN
 // ================================
 document.getElementById('pesquisa').addEventListener('input', function () {
     const texto = this.value.toLowerCase();
@@ -206,7 +208,7 @@ document.getElementById('pesquisa').addEventListener('input', function () {
 });
 
 // ================================
-// CADASTRO
+// CADASTRO - RAFAEL
 // ================================
 btnSalvar.addEventListener('click', () => {
     const nome = document.getElementById('cad-nome').value.trim();
@@ -224,17 +226,17 @@ if (!nome || !cpf || !nascimento || !status || !estado) {
     const registros = obterRegistros();
 
     if (indiceEditando !== null) {
-        // Atualizar registro existente
+       
         registros[indiceEditando] = { nome, cpf, nascimento, status, estado };
         salvarRegistros(registros);
         indiceEditando = null;
         btnSalvar.innerText = 'Salvar Cadastro';
     } else {
-        // Novo registro
+       
         adicionarRegistro({ nome, cpf, nascimento, status, estado });
     }
 
-    // Limpar formulário
+    
     document.getElementById('cad-nome').value = '';
     document.getElementById('cad-cpf').value = '';
     document.getElementById('cad-nascimento').value = '';
@@ -248,7 +250,7 @@ if (!nome || !cpf || !nascimento || !status || !estado) {
 });
 
 // ================================
-// POPUP
+// POPUP - BRUNA
 // ================================
 const popup = document.getElementById('popup-sucesso');
 const btnOk = document.getElementById('popup-ok');
@@ -259,7 +261,7 @@ btnOk.addEventListener('click', () => {
 });
 
 // ================================
-// GRÁFICOS DINÂMICOS
+// GRÁFICOS DINÂMICO - DENIS
 // ================================
 function atualizarGraficos() {
     const lista = obterRegistros();

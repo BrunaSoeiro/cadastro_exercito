@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Bruno+Ace+SC&family=Nothing+You+Could+Do&family=Permanent+Marker&family=Rock+Salt&family=Sigmar&family=Tourney:ital,wght@0,100..900;1,100..900&family=Zalando+Sans+Expanded:ital,wght@0,200..900;1,200..900&display=swap');
 
 /* ----------------------------------------- */
-/* ESTILOS GERAIS */
+/* ESTILOS GERAIS - BRUNA */
 /* ----------------------------------------- */
 body {
     margin: 0;
@@ -13,7 +13,7 @@ body {
 }
 
 /* ----------------------------------------- */
-/* BARRA LATERAL */
+/* BARRA LATERAL - BRUNA */
 /* ----------------------------------------- */
 .sidebar {
     position: fixed;
@@ -33,13 +33,9 @@ body {
 
 .sidebar .icone {
     width: 40px;
-    /* tamanho fixo menor */
     height: 40px;
-    /* mantém proporção */
     object-fit: contain;
-    /* garante que a imagem não distorça */
     vertical-align: middle;
-    /* alinha com o texto */
 }
 
 
@@ -68,7 +64,7 @@ body {
 }
 
 /* ----------------------------------------- */
-/* CARROSSEL DE IMAGENS FUNDO */
+/* CARROSSEL DE IMAGENS FUNDO - BRUNA */
 /* ----------------------------------------- */
 .fundo-rolando {
     position: absolute;
@@ -80,7 +76,6 @@ body {
     display: block;
     z-index: 1;
     pointer-events: none;
-    /* permite clicar na sidebar */
 }
 
 .carousel {
@@ -119,7 +114,7 @@ body {
 }
 
 /* ----------------------------------------- */
-/* QUADRO (VIEWS/PLACEHOLDER) */
+/* QUADRO DAVI*/
 /* ----------------------------------------- */
 .quadro-view {
     position: absolute;
@@ -169,7 +164,7 @@ body {
 }
 
 /* ----------------------------------------- */
-/* LISTAGENS / FORMULÁRIOS */
+/* LISTAGENS CLYSTEN*/
 /* ----------------------------------------- */
 .container {
     max-width: 600px;
@@ -213,7 +208,7 @@ input[type="date"] {
 
 
 /* ------------------------------- */
-/* LISTAGEM MILITAR / TABELAS */
+/* LISTAGEM MILITAR / TABELAS - DAVI */
 /* ------------------------------- */
 .cadastro-container-militar {
     background-color: #1a2f1a;
@@ -227,11 +222,9 @@ input[type="date"] {
     font-family: "Zalando Sans Expanded", sans-serif;
     box-sizing: border-box;
     overflow-x: hidden;
-    /* remove barra horizontal */
     word-wrap: break-word;
-    /* quebra texto grande */
-    max-height: 75vh;          /* limita altura do quadro */
-    overflow-y: auto;          /* ATIVA barra de rolagem vertical */
+    max-height: 75vh;         
+    overflow-y: auto;          
 }
 
 
@@ -266,7 +259,6 @@ input[type="date"] {
 .label-militar {
     display: block;
     margin-bottom: 12px;
-    /* espaço entre texto e caixa */
     font-size: 13px;
     color: #c9e6c9;
     font-weight: bold;
@@ -295,7 +287,6 @@ input[type="date"] {
     color: #e0ffd0;
     font-size: 14px;
     table-layout: fixed;
-    /* força colunas a se ajustarem */
 }
 
 .tabela-militar th,
@@ -304,7 +295,6 @@ input[type="date"] {
     border: 1px solid #3f6b3f;
     text-align: center;
     word-wrap: break-word;
-    /* quebra texto grande */
 }
 
 .tabela-militar tr:nth-child(even) {
@@ -336,7 +326,7 @@ input[type="date"] {
 
 
 /* ----------------------------------------- */
-/* FOOTER */
+/* FOOTER - DENIS */
 /* ----------------------------------------- */
 .footer {
     position: fixed;
@@ -361,7 +351,7 @@ audio {
 }
 
 /* ----------------------------------------- */
-/* ANIMAÇÃO DO CARROSSEL */
+/* ANIMAÇÃO DO CARROSSEL - BRUNA */
 /* ----------------------------------------- */
 @keyframes slide {
 
